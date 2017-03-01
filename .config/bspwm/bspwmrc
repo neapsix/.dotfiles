@@ -29,6 +29,7 @@ bspc config focused_border_color  "#88C0D0"
 # windows that go to specific desktops
 bspc rule -a Atom desktop=code follow=on
 bspc rule -a Gimp desktop=code state=floating follow=on
+bspc rule -a Inkscape desktop=code follow=on
 bspc rule -a Firefox desktop=web follow=on
 bspc rule -a Google-chrome desktop=web follow=on
 
