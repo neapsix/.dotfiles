@@ -141,5 +141,5 @@ super+shift+w
 	google-chrome-stable
 super+f
 	pcmanfm
-super+v
-	pavucontrol
+#super+v
+#	pavucontrol

@@ -7,6 +7,9 @@ polybar bottom &
 bspc monitor -d term web code music chat ws1 ws2 ws3
 
 bspc config focus_follows_pointer true
+bspc config pointer_follows_focus true
+
+bspc config initial_polarity second_child
 
 bspc config border_width         1
 bspc config window_gap          12
@@ -31,6 +34,7 @@ bspc rule -a Atom desktop=code follow=on
 bspc rule -a Gimp desktop=code state=floating follow=on
 bspc rule -a Inkscape desktop=code follow=on
 bspc rule -a Firefox desktop=web follow=on
+bspc rule -a 'Firefox:Places' state=floating
 bspc rule -a Google-chrome desktop=web follow=on
 
 # windows that can float on any desktop
