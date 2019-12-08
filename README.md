@@ -3,7 +3,7 @@
 Config files for my environment.
 
 ### Prerequisites
-[GNU Stow](https://www.gnu.org/software/stow/) (optional). Use stow to easily create links to these files in your home directory.
+* [GNU Stow](https://www.gnu.org/software/stow/) (optional). Use stow to easily create links to these files in your home directory.
 
 ### Installing
 In your home directory, clone the repository:
@@ -36,4 +36,4 @@ $ ln -s .dotfiles/vim/.vimrc .vimrc
 ``` 
 
 ## Acknowledgements
-Credit to Brandon Invergo ([Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html))  and Jon Leopard ([Dotfile Management With GNU Stow](https://jonleopard.com/blog/dotfile-management-with-gnu-stow/)) for the helpful blog posts that taught me how to use GNU Stow to manage dotfiles.
+Credit to Brandon Invergo ([Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html))  and Jon Leopard ([Dotfile Management With GNU Stow](https://jonleopard.com/blog/dotfile-management-with-gnu-stow/)) for the helpful blog posts that taught me this approach.
