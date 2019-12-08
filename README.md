@@ -14,7 +14,7 @@ $ git clone git@github.com:neapsix/.dotfiles.git
 Then, create symlinks in your home directory to the files.
 
 ### Create Symlinks Using GNU Stow
-Use `stow` To easily create symlinks for mulitple files at a time. Just `cd` to the directory and use stow to link these files. By default, stow creates links one level up in the tree for all the files within the specified directory.
+Use `stow` To easily create symlinks for mulitple files at a time. Just `cd` to the directory and use `stow` to link these files. By default, the command creates links one level up in the tree for all the files within the specified directory.
 
 For example, in `˜/.dotfiles/` run
 
