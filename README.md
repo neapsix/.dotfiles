@@ -27,7 +27,7 @@ to create `˜/.bash_profile@`, `˜/.bashrc@`, and `˜/.vimrc@`.
 
 #### Create Symlinks Manually
 
-If you don't want to use stow, you can also create the links manually. Using directorys as in the previous example, from your home directory, run:
+If you don't want to use `stow`, you can also create the links manually. Using directorys as in the previous example, from your home directory, run:
 
 ```
 $ ln -s .dotfiles/bash/.bash_profile .bash_profile
@@ -36,8 +36,4 @@ $ ln -s .dotfiles/vim/.vimrc .vimrc
 ``` 
 
 ## Acknowledgements
-Credit to Brandon Invergo[^1] and Jon Leopard[^2] for the helpful blog posts that taught me how to use GNU Stow to manage dotfiles.
-
-[^1]: [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) 
-
-[^2]: [Dotfile Management With GNU Stow](https://jonleopard.com/blog/dotfile-management-with-gnu-stow/)
+Credit to Brandon Invergo ([Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html))  and Jon Leopard ([Dotfile Management With GNU Stow](https://jonleopard.com/blog/dotfile-management-with-gnu-stow/)) for the helpful blog posts that taught me how to use GNU Stow to manage dotfiles.
