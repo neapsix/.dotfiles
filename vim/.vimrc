@@ -12,6 +12,7 @@ set ts=8 sts=4 sw=4 expandtab
 
 " Plug-ins
 
+" Bootstrap vim-plug plugin manager if it isn't installed.
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
