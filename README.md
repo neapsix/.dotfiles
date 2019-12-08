@@ -27,7 +27,7 @@ to create `˜/.bash_profile@`, `˜/.bashrc@`, and `˜/.vimrc@`.
 
 ### Create Symlinks Manually
 
-If you don't want to use `stow`, you can also create the links manually. Using directorys as in the previous example, from your home directory, run:
+If you don't want to use `stow`, you can also create the links manually. Using directories as in the previous example, from your home directory, run:
 
 ```
 $ ln -s .dotfiles/bash/.bash_profile .bash_profile
