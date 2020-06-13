@@ -5,8 +5,16 @@ zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**'
 zstyle :compinstall filename '/Users/ben/.zshrc'
 
-autoload -Uz compinit
-compinit
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+else
+  autoload -Uz compinit
+  compinit
+fi
+
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -40,8 +48,8 @@ alias ll='ls -alh'
 alias gh='history | grep -i $1'
 
 # Add personal scripts folder to path (don't add if already there).
-# typeset -U path
-# path=($HOME/bin $path)
+typeset -U path
+path=($HOME/bin $path)
 
 # Set zsh prompt
 PROMPT='%F{8}%m%f' # gray hostname
