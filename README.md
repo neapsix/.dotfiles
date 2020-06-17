@@ -40,7 +40,7 @@ $ ln -s .dotfiles/zsh/.zshenv .zshenv
 $ ln -s .dotfiles/zsh/.zshrc .zshrc
 ``` 
 
-### Run the Setup Script
+### Run the Setup Script (macOS)
 
 Run the script to set up System Preferences and hidden settings for macOS:
 
