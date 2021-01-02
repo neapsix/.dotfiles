@@ -271,10 +271,16 @@
     background: @sound;
 }
 
-#custom-arrow3 {
+/* #custom-arrow3 {
     font-size: 16px;
     color: @memory;
     background: @network;
+} */
+
+#custom-arrow3 {
+    font-size: 16px;
+    color: @memory;
+    background: @sound;
 }
 
 #custom-arrow4 {
