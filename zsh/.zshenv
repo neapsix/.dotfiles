@@ -4,5 +4,15 @@
 # Don't add anything to the path if it's there already. 
 typeset -U path
 
-# Add MacPorts install location to the path.
-path=(/opt/local/bin /opt/local/sbin $path)
+case "$OSTYPE" in
+  darwin*)
+    # Add MacPorts install location to the path.
+    path=(/opt/local/bin /opt/local/sbin $path)
+  ;;
+  linux*)
+    # ...
+  ;;
+  dragonfly*|freebsd*|netbsd*|openbsd*)
+    # ...
+  ;;
+esac

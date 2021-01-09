@@ -27,6 +27,8 @@ Plug 'tpope/vim-sensible'
 " Load some color scheme options.
 Plug 'arcticicestudio/nord-vim'
 " Plug 'andrwb/vim-lapis256'
+" Plug 'jeffkreeftmeijer/vim-dim'
+" Plug 'noahfrederick/vim-noctu'
 
 call plug#end()
 
@@ -34,3 +36,5 @@ call plug#end()
 
 colorscheme nord
 " colorscheme lapis256
+" colorscheme dim
+" colorscheme noctu

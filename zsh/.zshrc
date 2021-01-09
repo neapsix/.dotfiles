@@ -1,38 +1,54 @@
-# The following lines were added by compinstall
-
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _complete _ignored
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**'
-zstyle :compinstall filename '/Users/ben/.zshrc'
-
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-else
-  autoload -Uz compinit
-  compinit
-fi
-
-# End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
+
+# The following lines were added by compinstall
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**'
+zstyle ':completion:*' list-prompt ''
+zstyle ':completion:*' menu select=1
+#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/Users/ben/.zshrc'
+
+# Make Homebrew completions available before running compinit.
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+# Initialize zsh completions.
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
 
 # .zshrc - sourced for all shells but not scripts.
 # Do most configuration here so that login and non-login shells match.
 
-# Always use colors in ls.
-export CLICOLOR=1
+case "$OSTYPE" in
+    darwin*|dragonfly*|freebsd*|netbsd*|openbsd*)
+        # Always use colors in ls.
+        export CLICOLOR=1
+        # Set colors in macOS/FeeBSD format
+        export LSCOLORS=Exfxcxdxbxegedabagacad
+    ;;
+    linux*)
+        # ...
+    ;;
+esac
+
 
 # Determine what color things are in ls output. 
-# Use equivalent colors in macOS/FeeBSD LSCOLORS format and Linux LS_COLORS format.
-export LSCOLORS=Exfxcxdxbxegedabagacad
-export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+if type dircolors &>/dev/null; then
+    # If the user has a .dir_colors file, read it to set LS_COLORS.
+    test -r $HOME/.dir_colors && eval "$(dircolors -b $HOME/.dir_colors)"
+else
+    # Set LS_COLORS to a reasonable basic set of colors.
+    # export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+fi
 
 # Set colors in zsh completion to use LS_COLORS. 
 # zsh can handle LS_COLORS format but not LSCOLORS format.
