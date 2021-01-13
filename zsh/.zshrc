@@ -28,6 +28,9 @@ compinit
 # .zshrc - sourced for all shells but not scripts.
 # Do most configuration here so that login and non-login shells match.
 
+export EDITOR=vi
+
+# Determine what color things are in ls output. 
 case "$OSTYPE" in
     darwin*|dragonfly*|freebsd*|netbsd*|openbsd*)
         # Always use colors in ls.
@@ -40,14 +43,12 @@ case "$OSTYPE" in
     ;;
 esac
 
-
-# Determine what color things are in ls output. 
 if type dircolors &>/dev/null; then
     # If the user has a .dir_colors file, read it to set LS_COLORS.
     test -r $HOME/.dir_colors && eval "$(dircolors -b $HOME/.dir_colors)"
 else
-    # Set LS_COLORS to a reasonable basic set of colors.
-    # export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+    Set LS_COLORS to a reasonable basic set of colors.
+    export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 fi
 
 # Set colors in zsh completion to use LS_COLORS. 
@@ -62,6 +63,11 @@ alias ll='ls -alh'
 
 # grep for something in bash history
 alias gh='history | grep -i $1'
+
+# pass commands
+alias p='pass -c'
+alias pp='pass'
+alias pe='pass edit'
 
 # Add personal scripts folder to path (don't add if already there).
 typeset -U path
