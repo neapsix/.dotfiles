@@ -21,20 +21,23 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Load exactly one plug-in.
+" Load exactly two plug-ins.
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
 
 " Load some color scheme options.
-Plug 'arcticicestudio/nord-vim'
+" Plug 'arcticicestudio/nord-vim'
 " Plug 'andrwb/vim-lapis256'
 " Plug 'jeffkreeftmeijer/vim-dim'
 " Plug 'noahfrederick/vim-noctu'
+Plug 'tpope/vim-vividchalk'
 
 call plug#end()
 
 " Color schemes and plug-in-specific options
 
-colorscheme nord
+" colorscheme nord
 " colorscheme lapis256
 " colorscheme dim
 " colorscheme noctu
+colorscheme vividchalk
