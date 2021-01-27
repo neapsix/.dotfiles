@@ -71,7 +71,7 @@ alias pe='pass edit'
 
 # Add personal scripts folder to path (don't add if already there).
 typeset -U path
-path=($HOME/bin $path)
+path=($HOME/bin $HOME/.local/bin $HOME/.cargo/bin $path)
 
 # Set zsh prompt
 PROMPT='%F{8}%m%f' # gray hostname
