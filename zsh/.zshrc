@@ -30,7 +30,7 @@ compinit
 
 export EDITOR=vi
 
-# Determine what color things are in ls output. 
+# Determine what color things are in ls output.
 case "$OSTYPE" in
     darwin*|dragonfly*|freebsd*|netbsd*|openbsd*)
         # Always use colors in ls.
@@ -51,7 +51,7 @@ else
     export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 fi
 
-# Set colors in zsh completion to use LS_COLORS. 
+# Set colors in zsh completion to use LS_COLORS.
 # zsh can handle LS_COLORS format but not LSCOLORS format.
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
@@ -64,14 +64,10 @@ alias ll='ls -alh'
 # grep for something in bash history
 alias gh='history | grep -i $1'
 
-# pass commands
+# pass commands - password manager
 alias p='pass -c'
 alias pp='pass'
 alias pe='pass edit'
-
-# Add personal scripts folder to path (don't add if already there).
-typeset -U path
-path=($HOME/bin $HOME/.local/bin $HOME/.cargo/bin $path)
 
 # Set zsh prompt
 PROMPT='%F{8}%m%f' # gray hostname

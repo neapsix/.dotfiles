@@ -4,3 +4,6 @@
 if [ -r ~/.profile ]; then . ~/.profile; fi
 
 if [ -r ~/.bashrc ]; then . ~/.bashrc; fi
+
+# Add rustup environment.
+source "$HOME/.cargo/env"

@@ -1,7 +1,7 @@
 # .zshenv - sourced for all shells and scripts
 # Configure the path here if needed so that scripts can access all commands.
 
-# Don't add anything to the path if it's there already. 
+# Don't add anything to the path if it's there already.
 typeset -U path
 
 case "$OSTYPE" in
@@ -16,3 +16,9 @@ case "$OSTYPE" in
     # ...
   ;;
 esac
+
+# Add rustup environment.
+source "$HOME/.cargo/env"
+
+# Add personal and user scripts directories
+path=($HOME/.local/bin $HOME/bin  $path)

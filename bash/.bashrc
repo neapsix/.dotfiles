@@ -33,7 +33,7 @@ PROMPTCOLOR='\033[90m'; # Gray
 ROOTCOLOR='\033[31m'; # Red
 USERCOLOR='\033[36m'; # Cyan
 
-# <gray>host<white>:<gray>directory <red>root# <or cyan>user$: 
+# <gray>host<white>:<gray>directory <red>root# <or cyan>user$:
 PS1="\[$PROMPTCOLOR\h\]\[$REGULARCOLOR:\]\[$PROMPTCOLOR\W\] \`if [ $UID = 0 ]; then echo \[$ROOTCOLOR\u\]\[$REGULARCOLOR#\]; else echo \[$USERCOLOR\u\]\[$REGULARCOLOR$\]; fi\`\[$REGULARCOLOR\] ";
 
 # Aliases
@@ -47,3 +47,6 @@ alias gh='history | grep -i $1'
 
 # Add personal scripts folder to path.
 # PATH='$HOME/bin:$PATH'
+
+# Add rustup environment.
+source "$HOME/.cargo/env"
