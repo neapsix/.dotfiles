@@ -69,6 +69,17 @@ alias p='pass -c'
 alias pp='pass'
 alias pe='pass edit'
 
+# ttdl commands - todo.txt tool
+export TTDL_FILENAME="$HOME/Documents/todo.txt"
+alias t='ttdl'
+# Standard fields are: done,pri,finished,created,due,thr,description.
+alias td='ttdl l --fields=done,pri,due,description -s=done,pri,due,proj --human --compact --all '
+alias tt='ttdl start'
+alias ts='ttdl stop'
+alias d='ttdl done'
+alias ud='ttdl undone'
+alias wtd='clear; while td; do sleep 2; clear; done'
+
 # Set zsh prompt
 PROMPT='%F{8}%m%f' # gray hostname
 PROMPT+=':'
