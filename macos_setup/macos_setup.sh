@@ -34,6 +34,9 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
 echo 'Go to System Preferences > Keyboard and remove auto-correct items. Optionally, disable smart quotes.'
 
+# Disable the Big Sur-style inline window title in many applications. 
+defaults write -g NSWindowSupportsAutomaticInlineTitle -bool false
+
 # Finder > Preferences > General > New Finder windows show: User folder
 defaults write com.apple.finder NewWindowTarget -string 'PfHm'
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
