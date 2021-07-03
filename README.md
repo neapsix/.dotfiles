@@ -47,4 +47,4 @@ Run the script to set up System Preferences and hidden settings for macOS:
 `$ ./macos_setup.sh`
 
 ## Acknowledgements
-Credit to Brandon Invergo ([Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)) and Jon Leopard ([Dotfile Management With GNU Stow](https://jonleopard.com/blog/dotfile-management-with-gnu-stow/)) for the helpful blog posts that taught me this approach. Credit to Quentin Giraud ([aethys256/notes](https://github.com/aethys256/notes)) for a many of the macOS defaults tweaks.
+Credit to Brandon Invergo ([Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)) and Jon Leopard ([Dotfile Management With GNU Stow](https://jonleopard.com/blog/dotfile-management-with-gnu-stow/)) for the helpful blog posts that taught me this approach. Credit to Quentin Giraud ([aethys256/notes](https://github.com/aethys256/notes)) for many of the macOS defaults tweaks.
