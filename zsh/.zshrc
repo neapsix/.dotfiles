@@ -35,24 +35,29 @@ case "$OSTYPE" in
     darwin*|dragonfly*|freebsd*|netbsd*|openbsd*)
         # Always use colors in ls.
         export CLICOLOR=1
-        # Set colors in macOS/FeeBSD format
+        # Set colors in macOS/FeeBSD format.
         export LSCOLORS=Exfxcxdxbxegedabagacad
     ;;
     linux*)
-        # ...
-    ;;
+        # ...  ;;
 esac
 
+# If dircolors is provided as gdircolors (as in brew coreutils), alias it.
+type gdircolors &>/dev/null && alias dircolors='gdircolors'
+
+# Set ls colors in GNU coreutils format.
+# If dircolors is present, use it to color code ls output by file extension.
 if type dircolors &>/dev/null; then
-    # If the user has a .dir_colors file, read it to set LS_COLORS.
-    test -r $HOME/.dir_colors && eval "$(dircolors -b $HOME/.dir_colors)"
+    # Read the .dir_colors file or use the defaults to set LS_COLORS.
+    test -r $HOME/.dir_colors && \
+        eval "$(dircolors -b $HOME/.dir_colors)" || \
+        eval "$(dircolors)"
 else
-    # Set LS_COLORS to a reasonable basic set of colors.
+    # If dircolors isn't present, set basic LS_COLORS to color code by category.
     export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 fi
 
-# Set colors in zsh completion to use LS_COLORS.
-# zsh can handle LS_COLORS format but not LSCOLORS format.
+# Color code zsh completion, too. Use LS_COLORS because zsh needs GNU format. 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Aliases
@@ -62,7 +67,7 @@ alias la='ls -A'
 alias ll='ls -alh'
 
 # grep for something in shell history
-alias shf='history | grep -i $1'
+alias ghist='history | grep -i $1'
 
 # pass commands - password manager
 alias p='pass -c'
