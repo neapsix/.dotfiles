@@ -61,8 +61,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 alias la='ls -A'
 alias ll='ls -alh'
 
-# grep for something in bash history
-alias gh='history | grep -i $1'
+# grep for something in shell history
+alias shf='history | grep -i $1'
 
 # pass commands - password manager
 alias p='pass -c'
