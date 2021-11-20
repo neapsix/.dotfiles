@@ -33,13 +33,15 @@ export EDITOR=vi
 # Determine what color things are in ls output.
 case "$OSTYPE" in
     darwin*|dragonfly*|freebsd*|netbsd*|openbsd*)
-        # Always use colors in ls.
+        # Always use colors in BSD ls.
         export CLICOLOR=1
         # Set colors in macOS/FeeBSD format.
         export LSCOLORS=Exfxcxdxbxegedabagacad
     ;;
     linux*)
-        # ...  ;;
+        # Always use colors in GNU ls in terminals.
+        alias ls='ls --color=auto'
+    ;;
 esac
 
 # If dircolors is provided as gdircolors (as in brew coreutils), alias it.
