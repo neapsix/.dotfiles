@@ -18,7 +18,7 @@ case "$OSTYPE" in
 esac
 
 # Add rustup environment.
-source "$HOME/.cargo/env"
+test -r "$HOME/.cargo/env" && source "$HOME/.cargo/env"
 
 # Add personal and user scripts directories
 path=($HOME/.local/bin $HOME/bin  $path)
