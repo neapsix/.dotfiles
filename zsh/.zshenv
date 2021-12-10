@@ -21,4 +21,4 @@ esac
 test -r "$HOME/.cargo/env" && source "$HOME/.cargo/env"
 
 # Add personal and user scripts directories
-path=($HOME/.local/bin $HOME/bin  $path)
+path=($HOME/.local/bin $HOME/bin $path)

@@ -17,7 +17,7 @@ zstyle :compinstall filename '/Users/ben/.zshrc'
 
 # Make Homebrew completions available before running compinit.
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    PATH=$(brew --prefix)/share/zsh/site-functions:$PATH
 fi
 
 # Initialize zsh completions.
@@ -61,6 +61,14 @@ fi
 
 # Color code zsh completion, too. Use LS_COLORS because zsh needs GNU format. 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Set the path for interactive shells.
+
+# If brew is installed, put it first in the path.
+type brew &>/dev/null && path=($(brew --prefix)/bin $(brew --prefix)/sbin $path)
+
+# If asdf is installed, use it. 
+test -r "/usr/local/opt/asdf/libexec/asdf.sh" && source "/usr/local/opt/asdf/libexec/asdf.sh"
 
 # Aliases
 
