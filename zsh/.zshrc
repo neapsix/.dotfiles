@@ -6,7 +6,6 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-# The following lines were added by compinstall
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=**'
@@ -15,20 +14,12 @@ zstyle ':completion:*' menu select=1
 #zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle :compinstall filename '/Users/ben/.zshrc'
 
-# Make Homebrew completions available before running compinit.
-if type brew &>/dev/null; then
-    PATH=$(brew --prefix)/share/zsh/site-functions:$PATH
-fi
-
-# Initialize zsh completions.
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
 # .zshrc - sourced for all shells but not scripts.
 # Do most configuration here so that login and non-login shells match.
 
 export EDITOR=vi
+
+# Initialize bash completions too.
 
 # Determine what color things are in ls output.
 case "$OSTYPE" in
@@ -62,13 +53,22 @@ fi
 # Color code zsh completion, too. Use LS_COLORS because zsh needs GNU format. 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# Set the path for interactive shells.
+# Set the path and completions for interactive shells.
 
 # If brew is installed, put it first in the path.
 type brew &>/dev/null && path=($(brew --prefix)/bin $(brew --prefix)/sbin $path)
 
+# Make Homebrew completions available (do before running compinit).
+if type brew &>/dev/null; then
+    PATH=$(brew --prefix)/share/zsh/site-functions:$PATH
+fi
+
 # If asdf is installed, use it. 
 test -r "/usr/local/opt/asdf/libexec/asdf.sh" && source "/usr/local/opt/asdf/libexec/asdf.sh"
+test -r "$HOME/.asdf/asdf.sh" && source "$HOME/.asdf/asdf.sh"
+
+# Make asdf completions available (do before running compinit).
+test -r "$ASDF_DIR/completions" && fpath=(${ASDF_DIR}/completions $fpath)
 
 # Aliases
 
@@ -101,3 +101,7 @@ PROMPT+=':'
 PROMPT+='%F{8}%1~%f ' # gray directory
 PROMPT+='%(!.%F{9}.%F{6})%n%f ' # username red if elevated or cyan if not
 PROMPT+='%# ' # % or #
+
+# Initialize zsh completions (do this last).
+autoload -Uz compinit
+compinit
