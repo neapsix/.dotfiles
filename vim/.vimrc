@@ -5,6 +5,7 @@
 " General
 
 set ruler
+set hidden
 
 " Use four-space soft-tabs (sts) and auto-indents (sw). Use spaces instead of 
 " tabs (expandtab), but if you were to see a tab, use width 8 (ts).
