@@ -16,4 +16,4 @@ Modules under `core` contain configuration for Neovim itself. The `plugins` modu
 To accurately measure startup time, use `hyperfine "nvim +q"`. To see how long each part takes, use the built-in option: `nvim --startuptime /path/to/file`.
 
 ## Acknowledgements
-Credit to /u/shaunsingh0207 on Reddit ([Guide] Tips and tricks to reduce startup and Improve your lua config|https://www.reddit.com/r/neovim/comments/opipij/guide_tips_and_tricks_to_reduce_startup_and/) for the guide that taught me this approach.
+Credit to /u/shaunsingh0207 on Reddit ([\[Guide\] Tips and tricks to reduce startup and Improve your lua config](https://www.reddit.com/r/neovim/comments/opipij/guide_tips_and_tricks_to_reduce_startup_and/)) for the guide that taught me this approach.
