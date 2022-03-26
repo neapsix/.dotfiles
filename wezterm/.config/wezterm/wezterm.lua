@@ -7,9 +7,9 @@ return {
     line_height = 1.1,
 
     -- font = wezterm.font("Victor Mono", {weight="Medium"}),
-    font = wezterm.font("Fira Code"),
-    
-    -- font_size = 12.0,
+    -- font = wezterm.font("Fira Code"),
+   
+    font_size = 13,
 
     color_scheme = "nord",
     -- TODO: duplicate the nord color scheme and make these changes:
