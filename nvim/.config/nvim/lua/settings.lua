@@ -1,5 +1,5 @@
 -- 
--- basics.lua - General Neovim settings
+-- settings.lua - General Neovim settings
 --
 
 -- API aliases for declaring settings below
