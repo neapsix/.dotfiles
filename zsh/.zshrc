@@ -95,6 +95,9 @@ alias d='ttdl done'
 alias ud='ttdl undone'
 alias wtd='clear; while td; do sleep 2; clear; done'
 
+# alias to benchmark startup time while setting up nvim config
+alias nvim='nvim --startuptime /tmp/nvim-startuptime'
+
 # Set zsh prompt
 PROMPT='%F{8}%m%f' # gray hostname
 PROMPT+=':'

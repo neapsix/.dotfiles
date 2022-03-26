@@ -4,6 +4,7 @@
 
 -- API aliases for declaring settings below
 local opt = vim.opt
+local g = vim.g
 
 -- General
 opt.mouse = 'a'                     -- Enable the mouse
@@ -19,6 +20,7 @@ opt.linebreak = true                -- Wrap lines on words
 opt.termguicolors = true            -- Use 24-bit GUI colors
 opt.splitbelow = true               -- Open horizontal splits more naturally
 opt.splitright = true               -- Open vertical splits more naturally
+opt.showmode = false		    -- Hide the mode when using a status plugin
 
 -- Tabs and indenting
 opt.expandtab = true                -- Write spaces instead of tabs
@@ -33,3 +35,28 @@ opt.swapfile = false                -- Don't use a swap file.
 opt.lazyredraw = true               -- Improves performance with macros
 opt.synmaxcol = 240                 -- Stop highlighting syntax on long lines
 opt.updatetime = 400                -- Lower makes some plugins more responsive
+
+local disabled_built_ins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+    g["loaded_" .. plugin] = 1
+end

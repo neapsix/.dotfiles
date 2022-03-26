@@ -3,7 +3,6 @@
 --      Main neovim configuration file
 --  
 
-require('settings')
-require('keymaps')
-require('bootstrap').bootstrap_paq()
+require('core.options')
+require('core.mappings')
 require('plugins')
