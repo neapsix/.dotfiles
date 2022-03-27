@@ -17,6 +17,10 @@ paq:setup({verbose=false}) {
     {'nvim-treesitter/nvim-treesitter', run='TSUpdate'};
     'abecodes/tabout.nvim';
 
+    -- Completion
+    'hrsh7th/cmp-buffer';
+    'hrsh7th/nvim-cmp';
+
     -- Git integration
     'lewis6991/gitsigns.nvim';
 
@@ -52,6 +56,8 @@ require 'Comment'.setup {}
 
 require 'plugins.configs.nvim-treesitter'
 require 'tabout'.setup {}
+
+require 'plugins.configs.nvim-cmp'
 
 require 'gitsigns'.setup {}
 
