@@ -26,6 +26,8 @@ paq:setup({verbose=false}) {
 
     -- UI features
     'nvim-lualine/lualine.nvim';
+    -- 'ellisonleao/glow.nvim'; 
+    'neapsix/glow.nvim';   -- Use my patched version of glow.nvim 
 
     -- Benchmarking for Neovim 
     'henriquehbr/nvim-startup.lua';
@@ -62,5 +64,6 @@ require 'plugins.configs.nvim-cmp'
 require 'gitsigns'.setup {}
 
 require 'plugins.configs.lualine'
+vim.g.glow_no_install = true    -- Config for patched glow.nvim
 
 require 'nvim-startup'.setup {}
