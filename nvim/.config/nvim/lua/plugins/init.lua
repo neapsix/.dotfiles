@@ -20,6 +20,8 @@ paq:setup({verbose=false}) {
     -- Completion
     'hrsh7th/cmp-buffer';
     'hrsh7th/cmp-path';
+    'hrsh7th/cmp-cmdline';
+    'hrsh7th/cmp-calc';
     'hrsh7th/nvim-cmp';
 
     -- Git integration
