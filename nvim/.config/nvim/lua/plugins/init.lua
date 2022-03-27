@@ -28,9 +28,11 @@ paq:setup({verbose=false}) {
     
     -- Color schemes
     -- 'atelierbram/Base2Tone-vim';
+    -- 'sainnhe/everforest';
     -- 'shaunsingh/nord.nvim';
-    'bluz71/vim-nightfly-guicolors';
+    -- 'bluz71/vim-nightfly-guicolors';
     -- 'rafamadriz/neon';
+    'rose-pine/neovim';
 }
 
 -- The user has to run :PaqInstall or :PaqSync once to pull everything
@@ -38,9 +40,11 @@ paq:setup({verbose=false}) {
 -- Select a color scheme
 -- Note: Do this before setting up plugins that need to be themed
 -- vim.cmd[[colorscheme Base2Tone_EveningDark]]
+-- vim.cmd[[colorscheme everforest]]
 -- vim.cmd[[colorscheme nord]]
-vim.cmd [[colorscheme nightfly]]
+-- vim.cmd[[colorscheme nightfly]]
 -- vim.cmd[[colorscheme neon]]
+vim.cmd[[colorscheme rose-pine]]
 
 -- Run after-install setup for plugins that need it
 require 'nvim-autopairs'.setup {}
