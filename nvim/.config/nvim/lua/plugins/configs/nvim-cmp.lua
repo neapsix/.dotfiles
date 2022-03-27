@@ -44,6 +44,8 @@ local cmp_mapping = {
 cmp.setup {
     mapping = cmp_mapping,
     sources = cmp.config.sources({
+        -- { name = 'nvim_lsp' },
+    -- }, {
         { name = 'buffer' },
         { name = 'path' },
         { name = 'calc' },
@@ -61,3 +63,8 @@ cmp.setup.cmdline('/', {
         { name = 'buffer' },
     },
 })
+
+--[[ local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require 'lspconfig'['sumneko_lua'].setup {
+    capabilities = capabilities
+} ]]

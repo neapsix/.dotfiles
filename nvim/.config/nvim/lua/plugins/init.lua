@@ -9,6 +9,9 @@ local paq = require 'plugins.bootstrap_paq'.bootstrap_paq {}
 paq:setup({verbose=false}) {
     'savq/paq-nvim';
 
+    -- Libraries
+    -- 'nvim-lua/plenary.nvim';
+
     -- Basic editor features
     'windwp/nvim-autopairs';
     'numToStr/Comment.nvim';
@@ -17,7 +20,12 @@ paq:setup({verbose=false}) {
     {'nvim-treesitter/nvim-treesitter', run='TSUpdate'};
     'abecodes/tabout.nvim';
 
+    -- LSP
+    -- 'jose-elias-alvarez/null-ls.nvim';
+    -- 'neovim/nvim-lspconfig';
+
     -- Completion
+    -- 'hrsh7th/cmp-nvim-lsp';
     'hrsh7th/cmp-buffer';
     'hrsh7th/cmp-path';
     'hrsh7th/cmp-cmdline';
@@ -61,6 +69,9 @@ require 'Comment'.setup {}
 
 require 'plugins.configs.nvim-treesitter'
 require 'tabout'.setup {}
+
+-- require 'plugins.configs.null-ls'
+-- require 'plugins.configs.nvim-lspconfig'
 
 require 'plugins.configs.nvim-cmp'
 
