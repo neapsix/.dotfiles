@@ -10,7 +10,7 @@ cmp.setup {
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 
-        -- Ctrl+Space checks for completion.
+        -- Ctrl+Space checks for completion manually.
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         
         -- Disable Ctrl+Y. By default, Ctrl+Y confirms the selected suggestion.
@@ -21,6 +21,7 @@ cmp.setup {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
+
         -- Either Return or Tab confirms the first suggestion.
         ['<CR>'] = cmp.mapping.confirm({ select = true }), 
         ['<Tab>'] = cmp.mapping.confirm({ select = true }), 
