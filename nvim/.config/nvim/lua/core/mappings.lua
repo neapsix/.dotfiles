@@ -1,4 +1,4 @@
--- 
+--
 -- mappings.lua - Key mappings for Neovim
 --
 
