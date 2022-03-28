@@ -1,5 +1,5 @@
 --
--- plugins/configs/nvim-treesitter.lua - config for nvim-treesitter plugin
+-- plugins/config/nvim-treesitter.lua - config for nvim-treesitter plugin
 --
 
 require 'nvim-treesitter.configs'.setup {

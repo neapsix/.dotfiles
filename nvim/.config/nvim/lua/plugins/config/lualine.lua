@@ -1,5 +1,5 @@
 --
--- plugins/configs/lualine.lua - config for lualine.nvim plugin
+-- plugins/config/lualine.lua - config for lualine.nvim plugin
 --
 
 require('lualine').setup {

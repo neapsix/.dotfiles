@@ -1,5 +1,5 @@
 --
--- plugins/configs/telescope.lua - config for telescope plugin
+-- plugins/config/telescope.lua - config for telescope plugin
 --
 
 -- local telescope = require 'telescope'

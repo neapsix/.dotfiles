@@ -72,18 +72,18 @@ vim.cmd[[colorscheme rose-pine]]
 require 'nvim-autopairs'.setup {}
 require 'Comment'.setup {}
 
-require 'plugins.configs.nvim-treesitter'
+require 'plugins.config.nvim-treesitter'
 require 'tabout'.setup {}
 
--- require 'plugins.configs.null-ls'
-require 'plugins.configs.nvim-lspconfig'
+-- require 'plugins.config.null-ls'
+require 'plugins.config.nvim-lspconfig'
 
-require 'plugins.configs.nvim-cmp'
+require 'plugins.config.nvim-cmp'
 
 require 'gitsigns'.setup {}
 
-require 'plugins.configs.lualine'
+require 'plugins.config.lualine'
 vim.g.glow_no_install = true    -- Config for patched glow.nvim
-require 'plugins.configs.telescope'
+require 'plugins.config.telescope'
 
 require 'nvim-startup'.setup {}

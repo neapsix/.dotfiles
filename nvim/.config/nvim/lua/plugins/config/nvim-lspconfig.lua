@@ -1,5 +1,5 @@
 --
--- plugins/configs/nvim-lspconfig.lua - config for nvim-lspconfig plugin
+-- plugins/config/nvim-lspconfig.lua - config for nvim-lspconfig plugin
 --
 
 local runtime_path = vim.split(package.path, ';')

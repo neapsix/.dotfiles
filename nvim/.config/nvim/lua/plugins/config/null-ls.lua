@@ -1,5 +1,5 @@
 --
--- plugins/configs/null-ls.lua - config for null-ls plugin
+-- plugins/config/null-ls.lua - config for null-ls plugin
 --
 local nls = require("null-ls")
 

@@ -1,5 +1,5 @@
 --
--- plugins/configs/nvim-cmp.lua - config for nvim-cmp plugin
+-- plugins/config/nvim-cmp.lua - config for nvim-cmp plugin
 --
 
 local cmp = require 'cmp'
