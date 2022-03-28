@@ -10,7 +10,7 @@ paq:setup({verbose=false}) {
     'savq/paq-nvim';
 
     -- Libraries
-    -- 'nvim-lua/plenary.nvim';
+    'nvim-lua/plenary.nvim';
 
     -- Basic editor features
     'windwp/nvim-autopairs';
@@ -41,6 +41,9 @@ paq:setup({verbose=false}) {
     'nvim-lualine/lualine.nvim';
     -- 'ellisonleao/glow.nvim';
     'neapsix/glow.nvim';   -- Use my patched version of glow.nvim
+    'nvim-telescope/telescope.nvim';
+    {'nvim-telescope/telescope-fzf-native.nvim', run='make'};
+    'nvim-telescope/telescope-file-browser.nvim';
 
     -- Benchmarking for Neovim
     'henriquehbr/nvim-startup.lua';
@@ -81,5 +84,6 @@ require 'gitsigns'.setup {}
 
 require 'plugins.configs.lualine'
 vim.g.glow_no_install = true    -- Config for patched glow.nvim
+require 'plugins.configs.telescope'
 
 require 'nvim-startup'.setup {}
