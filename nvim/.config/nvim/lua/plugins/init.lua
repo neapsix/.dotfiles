@@ -1,4 +1,4 @@
--- 
+--
 -- plugins.lua - Plugins for Neovim
 --
 
@@ -22,10 +22,12 @@ paq:setup({verbose=false}) {
 
     -- LSP
     -- 'jose-elias-alvarez/null-ls.nvim';
-    -- 'neovim/nvim-lspconfig';
+    'neovim/nvim-lspconfig';
+    'L3MON4D3/LuaSnip';
 
     -- Completion
-    -- 'hrsh7th/cmp-nvim-lsp';
+    'hrsh7th/cmp-nvim-lsp';
+    'saadparwaiz1/cmp_luasnip';
     'hrsh7th/cmp-buffer';
     'hrsh7th/cmp-path';
     'hrsh7th/cmp-cmdline';
@@ -37,12 +39,12 @@ paq:setup({verbose=false}) {
 
     -- UI features
     'nvim-lualine/lualine.nvim';
-    -- 'ellisonleao/glow.nvim'; 
-    'neapsix/glow.nvim';   -- Use my patched version of glow.nvim 
+    -- 'ellisonleao/glow.nvim';
+    'neapsix/glow.nvim';   -- Use my patched version of glow.nvim
 
-    -- Benchmarking for Neovim 
+    -- Benchmarking for Neovim
     'henriquehbr/nvim-startup.lua';
-    
+
     -- Color schemes
     -- 'atelierbram/Base2Tone-vim';
     -- 'sainnhe/everforest';
@@ -71,7 +73,7 @@ require 'plugins.configs.nvim-treesitter'
 require 'tabout'.setup {}
 
 -- require 'plugins.configs.null-ls'
--- require 'plugins.configs.nvim-lspconfig'
+require 'plugins.configs.nvim-lspconfig'
 
 require 'plugins.configs.nvim-cmp'
 

@@ -1,11 +1,13 @@
 --
 -- plugins/configs/null-ls.lua - config for null-ls plugin
 --
-local nullls = require("null-ls")
+local nls = require("null-ls")
 
-nullls.setup({
-	sources = {
-        -- nullls.builtins.formatting.stylua,
-        -- nullls.builtins.code_actions.shellcheck,
-	},
+local sources = {
+    -- nls.builtins.formatting.stylua,
+    nls.builtins.code_actions.shellcheck,
+}
+
+nls.setup({
+    sources = sources
 })

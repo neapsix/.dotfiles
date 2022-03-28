@@ -4,17 +4,23 @@
 
 local cmp = require 'cmp'
 
-local cmp_mapping = {
+local snippet = {
+    expand = function(args)
+        require 'luasnip'.lsp_expand(args.body)
+    end,
+}
+
+local mapping = {
     -- Ctrl+b and Ctrl+f scroll the docs window.
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 
     -- Ctrl+Space checks for completion manually.
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    
+
     -- Disable Ctrl+Y. By default, Ctrl+Y confirms the selected suggestion.
     -- ['<C-y>'] = cmp.config.disable,
-    
+
     -- Ctrl+E aborts in insert mode and closes the menu in command mode.
     ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
@@ -22,7 +28,7 @@ local cmp_mapping = {
     }),
 
     -- Either Return or Tab confirms the first suggestion.
-    -- ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 'c' }), 
+    -- ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 'c' }),
     ['<Tab>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i', 'c' }),
 
     -- Alternative mapping for Tab (from cmp wiki IntelliJ-style snippet):
@@ -42,10 +48,12 @@ local cmp_mapping = {
 }
 
 cmp.setup {
-    mapping = cmp_mapping,
+    snippet = snippet,
+    mapping = mapping,
     sources = cmp.config.sources({
-        -- { name = 'nvim_lsp' },
-    -- }, {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    }, {
         { name = 'buffer' },
         { name = 'path' },
         { name = 'calc' },
@@ -64,7 +72,9 @@ cmp.setup.cmdline('/', {
     },
 })
 
---[[ local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities)
+
 require 'lspconfig'['sumneko_lua'].setup {
     capabilities = capabilities
-} ]]
+}
