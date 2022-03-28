@@ -1,4 +1,4 @@
--- 
+--
 -- settings.lua - General Neovim settings
 --
 
@@ -9,7 +9,7 @@ local g = vim.g
 -- General
 opt.mouse = 'a'                     -- Enable the mouse
 opt.clipboard = 'unnamedplus'       -- Use the system clipboard
--- opt.cot = 'menuone,noselect'     -- Enable completion (ignored with nvim-cmp)
+opt.cot = 'menuone,noselect'        -- Enable completion (ignored with nvim-cmp)
 opt.hidden = true                   -- Enable hidden buffers
 
 -- UI
