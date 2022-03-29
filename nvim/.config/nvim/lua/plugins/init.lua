@@ -19,6 +19,7 @@ paq:setup({verbose=false}) {
     -- Syntax features
     {'nvim-treesitter/nvim-treesitter', run='TSUpdate'};
     'abecodes/tabout.nvim';
+    'norcalli/nvim-colorizer.lua';
 
     -- LSP
     -- 'jose-elias-alvarez/null-ls.nvim';
@@ -75,6 +76,7 @@ require 'Comment'.setup {}
 
 require 'plugins.config.nvim-treesitter'
 require 'tabout'.setup {}
+require 'colorizer'.setup {}
 
 -- require 'plugins.config.null-ls'
 require 'plugins.config.nvim-lspconfig'
