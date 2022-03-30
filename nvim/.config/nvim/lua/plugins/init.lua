@@ -22,7 +22,7 @@ paq:setup({verbose=false}) {
     'norcalli/nvim-colorizer.lua';
 
     -- LSP
-    -- 'jose-elias-alvarez/null-ls.nvim';
+    'jose-elias-alvarez/null-ls.nvim';
     'neovim/nvim-lspconfig';
     'L3MON4D3/LuaSnip';
 
@@ -78,7 +78,7 @@ require 'plugins.config.nvim-treesitter'
 require 'tabout'.setup {}
 require 'colorizer'.setup {}
 
--- require 'plugins.config.null-ls'
+require 'plugins.config.null-ls'
 require 'plugins.config.nvim-lspconfig'
 
 require 'plugins.config.nvim-cmp'

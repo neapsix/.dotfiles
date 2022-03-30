@@ -5,6 +5,7 @@ local nls = require("null-ls")
 
 local sources = {
     -- nls.builtins.formatting.stylua,
+    nls.builtins.diagnostics.shellcheck,
     nls.builtins.code_actions.shellcheck,
 }
 
