@@ -43,7 +43,6 @@ paq:setup({verbose=false}) {
     'nvim-lualine/lualine.nvim';
     -- 'ellisonleao/glow.nvim';
     'neapsix/glow.nvim';   -- Use my patched version of glow.nvim
-    'camspiers/snap';
     'nvim-telescope/telescope.nvim';
     {'nvim-telescope/telescope-fzf-native.nvim', run='make'};
     'nvim-telescope/telescope-file-browser.nvim';
@@ -90,6 +89,5 @@ require 'gitsigns'.setup {}
 require 'plugins.config.lualine'
 vim.g.glow_no_install = true    -- Config for patched glow.nvim
 require 'plugins.config.telescope'
-require 'plugins.config.snap'
 
 require 'nvim-startup'.setup {}
