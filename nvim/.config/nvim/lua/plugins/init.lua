@@ -25,6 +25,7 @@ paq:setup({verbose=false}) {
     'jose-elias-alvarez/null-ls.nvim';
     'neovim/nvim-lspconfig';
     'L3MON4D3/LuaSnip';
+    'folke/trouble.nvim';
 
     -- Completion
     'hrsh7th/cmp-nvim-lsp';
@@ -80,6 +81,7 @@ require 'colorizer'.setup {}
 
 require 'plugins.config.null-ls'
 require 'plugins.config.nvim-lspconfig'
+require 'plugins.config.trouble'
 
 require 'plugins.config.nvim-cmp'
 
