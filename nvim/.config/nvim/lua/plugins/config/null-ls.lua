@@ -4,7 +4,12 @@
 local nls = require("null-ls")
 
 local sources = {
-    -- nls.builtins.formatting.stylua,
+    -- lua
+    nls.builtins.formatting.stylua,
+    -- markdown
+    nls.builtins.diagnostics.markdownlint,
+    nls.builtins.formatting.prettierd,
+    -- shell
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.code_actions.shellcheck,
 }
