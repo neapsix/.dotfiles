@@ -72,9 +72,7 @@ cmp.setup.cmdline('/', {
     },
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities)
+-- Capabilities are set up in nvim-lspconfig.lua
 
-require 'lspconfig'['sumneko_lua'].setup {
-    capabilities = capabilities
-}
+--[[ local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities) ]]
