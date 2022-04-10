@@ -9,6 +9,9 @@ local sources = {
     nls.builtins.code_actions.shellcheck,
 }
 
+local on_attach = require 'plugins.config.handlers'.on_attach
+
 nls.setup({
-    sources = sources
+    sources = sources,
+    on_attach = on_attach,
 })

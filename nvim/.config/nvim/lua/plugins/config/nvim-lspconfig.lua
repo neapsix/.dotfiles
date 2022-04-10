@@ -9,6 +9,8 @@ table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities)
 
+local on_attach = require 'plugins.config.handlers'.on_attach
+
 require 'lspconfig'.sumneko_lua.setup {
     settings = {
         Lua = {
@@ -28,4 +30,11 @@ require 'lspconfig'.sumneko_lua.setup {
         },
     },
     capabilities = capabilities,
+    on_attach = on_attach,
 }
+
+-- Non-Server Specific Mappings
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
