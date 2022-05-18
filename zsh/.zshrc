@@ -84,6 +84,9 @@ alias p='pass -c'
 alias pp='pass'
 alias pe='pass edit'
 
+# keychain command - start ssh and gpg agents
+alias kc='eval $(keychain --eval --agents ssh,gpg id_ed25519 id_rsa @ben)'
+
 # ttdl commands - todo.txt tool
 export TTDL_FILENAME="$HOME/Documents/todo.txt"
 alias t='ttdl'
