@@ -26,6 +26,7 @@ paq:setup({verbose=false}) {
     'neovim/nvim-lspconfig';
     'L3MON4D3/LuaSnip';
     'folke/trouble.nvim';
+    'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim';
 
     -- Completion
     'hrsh7th/cmp-nvim-lsp';
