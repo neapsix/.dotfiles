@@ -8,6 +8,9 @@ local sources = {
     nls.builtins.formatting.stylua,
     -- markdown
     nls.builtins.diagnostics.markdownlint,
+    -- python
+    nls.builtins.formatting.black,
+    -- javascript and friends
     nls.builtins.formatting.prettierd,
     -- shell
     nls.builtins.diagnostics.shellcheck,

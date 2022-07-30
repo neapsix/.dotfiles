@@ -63,6 +63,9 @@ if type brew &>/dev/null; then
     PATH=$(brew --prefix)/share/zsh/site-functions:$PATH
 fi
 
+# Use python from brew if present
+type brew &>/dev/null && path=($(brew --prefix)/opt/python/libexec/bin $path)
+
 # If asdf is installed, use it. 
 test -r "/usr/local/opt/asdf/libexec/asdf.sh" && source "/usr/local/opt/asdf/libexec/asdf.sh"
 test -r "$HOME/.asdf/asdf.sh" && source "$HOME/.asdf/asdf.sh"

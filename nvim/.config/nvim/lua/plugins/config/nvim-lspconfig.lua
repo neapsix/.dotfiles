@@ -33,6 +33,12 @@ require 'lspconfig'.sumneko_lua.setup {
     on_attach = on_attach,
 }
 
+require 'lspconfig'.pyright.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+
 -- Non-Server Specific Mappings
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)

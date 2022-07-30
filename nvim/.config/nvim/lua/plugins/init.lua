@@ -82,6 +82,7 @@ require 'colorizer'.setup {}
 require 'plugins.config.null-ls'
 require 'plugins.config.nvim-lspconfig'
 require 'plugins.config.trouble'
+require 'plugins.config.toggle-lsp-diagnostics'
 
 require 'plugins.config.nvim-cmp'
 
