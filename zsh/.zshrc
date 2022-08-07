@@ -56,7 +56,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # Set the path and completions for interactive shells.
 
 # If brew is installed, put it first in the path.
-type brew &>/dev/null && path=($(brew --prefix)/bin $(brew --prefix)/sbin $path)
+# Now done in ~/.zprofile using brew shellenv command.
+# type brew &>/dev/null && path=($(brew --prefix)/bin $(brew --prefix)/sbin $path)
 
 # Make Homebrew completions available (do before running compinit).
 if type brew &>/dev/null; then
