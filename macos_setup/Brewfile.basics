@@ -1,0 +1,8 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "git"
+brew "gnupg"
+brew "pass"
+brew "rsync"
+brew "stow"
