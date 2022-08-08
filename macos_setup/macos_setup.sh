@@ -557,7 +557,3 @@ todo "Set friendly host name: # scutil --set ComputerName <friendly host name>"
 todo "Flush directory service: $ dscacheutil -flushcache"
 todo "Reboot."
 
-# Install mas https://github.com/mas-cli/mas
-# Use mas to install purchased apps from the app store (amphetamine, wireguard)
-
-#unset task
