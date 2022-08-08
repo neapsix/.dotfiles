@@ -184,19 +184,19 @@ run_task \
 todo "Go to System Preferences > Keyboard and remove auto-correct items." 
 todo "Optionally, disable smart quotes."
 
-# This one is a mixed bag, so I'm leaving it disabled for now.
-# Maybe needed for modals?
-# topic 'System Preferences > Keyboard > Shortcuts'
-# # =============================================================================
-# apple_keyboard_ui_mode()
-# {
-#     defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
-#     defaults write -g AppleKeyboardUIMode
-# }
-# 
-# run_task \
-# "Enable full keyboard access with tab and shift-tab." \
-# apple_keyboard_ui_mode
+# This one is a mixed bag. Useful for forms in espanso, maybe other modals.
+topic 'System Preferences > Keyboard > Shortcuts'
+# =============================================================================
+
+apple_keyboard_ui_mode()
+{
+    defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+    defaults write -g AppleKeyboardUIMode
+}
+
+run_task \
+"Enable full keyboard access with tab and shift-tab." \
+apple_keyboard_ui_mode
 
 topic 'Finder > Preferences'
 # =============================================================================
@@ -278,15 +278,15 @@ snap_to_grid
 # "Show item info near icons on the desktop and in other icon views" \
 # show_item_info
 
-# I don't really care if this is hidden, so I'm OK leaving it as is.
-# run_task \
-# "Show the ~/Library folder" \
-# "chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library"
+# I don't care if these are hidden, but some save dialogs don't show hidden
+run_task \
+"Show the ~/Library folder" \
+"chflags nohidden $HOME/Library && xattr -d com.apple.FinderInfo ~/Library"
 
 # Ditto.
-# run_task \
-# "Show the /Volumes folder" \
-# "sudo chflags nohidden /Volumes"
+run_task \
+"Show the /Volumes folder" \
+"sudo chflags nohidden /Volumes"
 
 expand_get_info_panes()
 {
@@ -369,7 +369,6 @@ run_task \
 "Terminal: Use only UTF-8, not other encodings. (Requires Terminal restart)" \
 "defaults write com.apple.terminal StringEncodings -array 4"
 
-
 # Reference: https://security.stackexchange.com/a/47786/8918
 run_task \
 "Terminal: Enable Secure Keyboard Entry." \
@@ -384,21 +383,28 @@ run_task \
 # "iTunes: Don't automatically sync connected devices" \
 # "defaults write com.apple.itunes dontAutomaticallySyncIPods -bool true"
 
-# The following don't seem to work anymore. Replaced with TODO items.
-# Show the full URL in the address bar (note: this still hides the scheme)
-# defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+# The following don't seem to work anymore. Test and replace todo items.
+run_task \
+"Show the full URL in the address bar (note: this still hides the scheme)" \
+"defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true"
 
-# Safari: Don’t send search queries to Apple
-# defaults write com.apple.Safari UniversalSearchEnabled -bool false
-# defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+safari_search_settings()
+{
+    defaults write com.apple.Safari UniversalSearchEnabled -bool false
+    defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+}
 
-# run_task \
-# "Safari: Don't offer to save passwords." \
-# "defaults write com.apple.Safari AutoFillPasswords -bool false"
+run_task \
+"Safari: Don’t send search queries to Apple" \
+"safari_search_settings"
 
-todo "In Safari Preferences, disable AutoFill > User names and passwords."
-todo "In Safari Preferences, select Advanced > Show full website address."
-todo "In Safari Preferences, select Advanced > Show Develop menu in menu bar."
+run_task \
+"Safari: Don't offer to save passwords." \
+"defaults write com.apple.Safari AutoFillPasswords -bool false"
+
+# todo "In Safari Preferences, disable AutoFill > User names and passwords."
+# todo "In Safari Preferences, select Advanced > Show full website address."
+# todo "In Safari Preferences, select Advanced > Show Develop menu in menu bar."
 
 run_task \
 "Disk Utility: Show All Devices." \
