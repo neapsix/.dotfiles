@@ -61,7 +61,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Make Homebrew completions available (do before running compinit).
 if type brew &>/dev/null; then
-    PATH=$(brew --prefix)/share/zsh/site-functions:$PATH
+    FPATH=${HOMEBREW_PREFIX}/share/zsh/site-functions:${HOMEBREW_PREFIX}/share/zsh-completions:$FPATH
 fi
 
 # Use python from brew if present
