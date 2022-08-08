@@ -290,15 +290,9 @@ snap_to_grid
 # show_item_info
 
 # I don't care if these are hidden, but some save dialogs don't show hidden
-show_library()
-{
-    chflags nohidden "$HOME/Library"
-    xattr -d com.apple.FinderInfo "$HOME/Library"
-}
-
 run_task \
 "Show the ~/Library folder" \
-show_library
+"chflags nohidden $HOME/Library"
 
 # Ditto.
 run_task \
