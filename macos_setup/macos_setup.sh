@@ -394,28 +394,28 @@ run_task \
 # "iTunes: Don't automatically sync connected devices" \
 # "defaults write com.apple.itunes dontAutomaticallySyncIPods -bool true"
 
-# The following don't seem to work anymore. Test and replace todo items.
-run_task \
-"Show the full URL in the address bar (note: this still hides the scheme)" \
-"defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true"
+# The following don't seem to work anymore. Replaced with todo items.
+# run_task \
+# "Show the full URL in the address bar (note: this still hides the scheme)" \
+# "defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true"
+#
+# safari_search_settings()
+# {
+#     defaults write com.apple.Safari UniversalSearchEnabled -bool false
+#     defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+# }
 
-safari_search_settings()
-{
-    defaults write com.apple.Safari UniversalSearchEnabled -bool false
-    defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-}
+# run_task \
+# "Safari: Don’t send search queries to Apple" \
+# "safari_search_settings"
 
-run_task \
-"Safari: Don’t send search queries to Apple" \
-"safari_search_settings"
+# run_task \
+# "Safari: Don't offer to save passwords." \
+# "defaults write com.apple.Safari AutoFillPasswords -bool false"
 
-run_task \
-"Safari: Don't offer to save passwords." \
-"defaults write com.apple.Safari AutoFillPasswords -bool false"
-
-# todo "In Safari Preferences, disable AutoFill > User names and passwords."
-# todo "In Safari Preferences, select Advanced > Show full website address."
-# todo "In Safari Preferences, select Advanced > Show Develop menu in menu bar."
+todo "In Safari Preferences, disable AutoFill > User names and passwords."
+todo "In Safari Preferences, select Advanced > Show full website address."
+todo "In Safari Preferences, select Advanced > Show Develop menu in menu bar."
 
 run_task \
 "Disk Utility: Show All Devices." \
