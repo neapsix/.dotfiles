@@ -12,7 +12,7 @@ topic()
 {
     printf "\n"
     printf "%s\n" "$1"
-    printf "%.s=" $(seq 2 $(tput cols))
+    printf "%.s=" $(seq 2 "$(tput cols)")
     printf "\n"
 }
 
@@ -28,7 +28,7 @@ start_task()
 prompt_for_key()
 {
     printf '\r\33[2K> %s' "$1"
-    read -n1 -s
+    read -r
 }
 
 # success [Name of task]
@@ -57,9 +57,16 @@ failure()
 run_task()
 {
     start_task "$1"
-    echo "# $2" >>macos_setup.log
-    $2 >>macos_setup.log 2>&1 && \
-    success "$1" || failure "$1" "" "$3"
+
+    echo "# $2" >>macos_setup.log 2>&1
+
+    if $2 >>macos_setup.log 2>&1; then
+        success "$1"
+    else
+        failure "$1" "" "$3"
+    fi
+    # $2 >>macos_setup.log 2>&1 && \
+    # success "$1" || failure "$1" "" "$3"
 }
 
 # todo [Name of task]
@@ -80,8 +87,12 @@ SUDO_USER=$(whoami)
 echo  "> Enter sudo password if needed."
 
 echo "# sudo -v" >>macos_setup.log
-sudo -v >>macos_setup.log 2>&1 && \
-success "Grant sudo permission" || failure "Grant sudo permission" "" "yes"
+
+if sudo -v ; then 
+    success "Grant sudo permission" 
+else
+    failure "Grant sudo permission" "" "yes"
+fi
 
 #run_task "Get sudo permission. " "sudo -v" "yes"
 
@@ -224,11 +235,11 @@ run_task \
 
 run_task \
 "Advanced > When performing a search: Search the Current Folder" \
-"defaults write com.apple.finder FXDefaultSearchScope -string "SCcf""
+"defaults write com.apple.finder FXDefaultSearchScope -string \"SCcf\""
 
 run_task \
 "As List" \
-"defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv""
+"defaults write com.apple.finder FXPreferredViewStyle -string \"Nlsv\""
 
 run_task \
 "Clear out view preferences in home directories" \
@@ -257,9 +268,9 @@ run_task \
 
 snap_to_grid()
 {
-    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-    /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" "$HOME/Library/Preferences/com.apple.finder.plist"
+    /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" "$HOME/Library/Preferences/com.apple.finder.plist"
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" "$HOME/Library/Preferences/com.apple.finder.plist"
 }
 
 run_task \
@@ -281,8 +292,8 @@ snap_to_grid
 # I don't care if these are hidden, but some save dialogs don't show hidden
 show_library()
 {
-    chflags nohidden $HOME/Library
-    xattr -d com.apple.FinderInfo ~/Library
+    chflags nohidden "$HOME/Library"
+    xattr -d com.apple.FinderInfo "$HOME/Library"
 }
 
 run_task \
@@ -489,7 +500,7 @@ install_xcode()
         fi
 
         xcode-select --install >>macos_setup.log 2>&1 && install_started=true
-        prompt_for_key "When you're done installing Xcode, press any key to continue."
+        prompt_for_key "When you're done installing Xcode, press Enter to continue."
     done
 )
 
