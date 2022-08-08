@@ -454,7 +454,7 @@ topic 'Xcode'
 
 check_for_xcode() 
 {
-    if type xcode-select &> /dev/null && 
+    if type xcode-select > /dev/null 2>&1 && 
        xpath=$( xcode-select --print-path 2> /dev/null ) &&
        test -d "${xpath}" && test -x "${xpath}"
     then
@@ -506,7 +506,7 @@ install_brew()
     install_started=false
 
     while true; do
-        if type brew &> /dev/null; then
+        if type brew > /dev/null 2>&1; then
             success "$task"
             break
         fi
