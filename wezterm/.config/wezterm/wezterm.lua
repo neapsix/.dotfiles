@@ -6,6 +6,7 @@ local window_frame = require 'lua/rose-pine'.window_frame()
 -- WezTerm config
 
 return {
+    check_for_updates = false,
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     -- enable_scroll_bar = true,
@@ -13,6 +14,7 @@ return {
     -- font = wezterm.font("Victor Mono", {weight="Medium"}),
     -- font = wezterm.font("Fira Code"),
     font_size = 13,
+    freetype_load_target = "Light",
     color_scheme = 'rose-pine',
     window_padding = {
         left = 5,
