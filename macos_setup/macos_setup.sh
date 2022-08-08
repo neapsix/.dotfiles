@@ -191,7 +191,7 @@ topic 'System Preferences > Keyboard > Shortcuts'
 apple_keyboard_ui_mode()
 {
     defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-    defaults write -g AppleKeyboardUIMode
+    # defaults write -g AppleKeyboardUIMode
 }
 
 run_task \
@@ -279,9 +279,15 @@ snap_to_grid
 # show_item_info
 
 # I don't care if these are hidden, but some save dialogs don't show hidden
+show_library()
+{
+    chflags nohidden $HOME/Library
+    xattr -d com.apple.FinderInfo ~/Library
+}
+
 run_task \
 "Show the ~/Library folder" \
-"chflags nohidden $HOME/Library && xattr -d com.apple.FinderInfo ~/Library"
+show_library
 
 # Ditto.
 run_task \
@@ -534,6 +540,7 @@ topic 'Applications'
 
 install_brew_bundles()
 (
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     for file in "./Brewfile.basics" "$HOME/Brewfile"; do
         run_task "Install $file" "sudo -u $SUDO_USER brew bundle install --file $file"
     done
