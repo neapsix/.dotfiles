@@ -13,7 +13,7 @@ return {
     line_height = 1.1,
     -- font = wezterm.font("Victor Mono", {weight="Medium"}),
     -- font = wezterm.font("Fira Code"),
-    font_size = 13,
+    font_size = 14,
     freetype_load_target = "Light",
     color_scheme = 'rose-pine',
     window_padding = {
