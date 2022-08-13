@@ -49,9 +49,6 @@ paq:setup({verbose=false}) {
     {'nvim-telescope/telescope-fzf-native.nvim', run='make'};
     'nvim-telescope/telescope-file-browser.nvim';
 
-    -- Benchmarking for Neovim
-    'henriquehbr/nvim-startup.lua';
-
     -- Color schemes
     -- 'atelierbram/Base2Tone-vim';
     -- 'sainnhe/everforest';
@@ -92,5 +89,3 @@ require 'gitsigns'.setup {}
 require 'plugins.config.lualine'
 vim.g.glow_no_install = true    -- Config for patched glow.nvim
 require 'plugins.config.telescope'
-
-require 'nvim-startup'.setup {}
