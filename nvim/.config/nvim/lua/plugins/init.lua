@@ -22,6 +22,8 @@ paq:setup({verbose=false}) {
     'norcalli/nvim-colorizer.lua';
 
     -- LSP
+    'williamboman/mason.nvim';
+    'williamboman/mason-lspconfig.nvim';
     'jose-elias-alvarez/null-ls.nvim';
     'neovim/nvim-lspconfig';
     'L3MON4D3/LuaSnip';
@@ -77,6 +79,8 @@ require 'plugins.config.nvim-treesitter'
 require 'tabout'.setup {}
 require 'colorizer'.setup {}
 
+require("mason").setup()
+require("mason-lspconfig").setup()
 require 'plugins.config.null-ls'
 require 'plugins.config.nvim-lspconfig'
 require 'plugins.config.trouble'
