@@ -177,6 +177,13 @@ run_task \
 "Enable dragging, Without drag lock" \
 enable_dragging
 
+topic 'System Preferences > Accessibility > Display > Pointer tab'
+# =============================================================================
+
+run_task \
+"Shake mouse pointer to locate (disable)" \
+"defaults write NSGlobalDomain CGDisableCursorLocationMagnification -bool true"
+
 topic 'System Preferences > Keyboard > Text'
 # =============================================================================
 
