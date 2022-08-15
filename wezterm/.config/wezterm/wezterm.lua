@@ -14,8 +14,8 @@ return {
     -- font = wezterm.font("Victor Mono", {weight="Medium"}),
     -- font = wezterm.font("Fira Code"),
     font_size = 14,
-    freetype_load_target = "Light",
-    color_scheme = 'rose-pine',
+    -- freetype_load_target = "Light",
+    -- color_scheme = 'rose-pine',
     window_padding = {
         left = 5,
         right = 5, -- also the width of the scroll bar
@@ -24,8 +24,8 @@ return {
     },
     colors = colors,
     window_frame = window_frame,
-    --[[ keys = {
-        {key="L", mods="CTRL", action="ShowDebugOverlay"},
-        {key="R", mods="CTRL", action="ReloadConfiguration"}
-    } ]]
+    -- keys = {
+    --     {key="L", mods="CTRL", action="ShowDebugOverlay"},
+    --     {key="R", mods="CTRL", action="ReloadConfiguration"}
+    -- }
 }
