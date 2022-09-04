@@ -16,6 +16,10 @@ paq:setup({verbose=false}) {
     'windwp/nvim-autopairs';
     'numToStr/Comment.nvim';
 
+    -- Markdown
+    'godlygeek/tabular';
+    'preservim/vim-markdown';
+
     -- Syntax features
     {'nvim-treesitter/nvim-treesitter', run='TSUpdate'};
     'abecodes/tabout.nvim';

@@ -33,11 +33,15 @@ require 'lspconfig'.sumneko_lua.setup {
     on_attach = on_attach,
 }
 
-require 'lspconfig'.pyright.setup {
+require 'lspconfig'.ansiblels.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
 
+require 'lspconfig'.pyright.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 
 -- Non-Server Specific Mappings
 local opts = { noremap=true, silent=true }

@@ -23,11 +23,13 @@ opt.splitright = true               -- Open vertical splits more naturally
 opt.showmode = false		    -- Hide the mode when using a status plugin
 
 -- Tabs and indenting
-opt.expandtab = true                -- Write spaces instead of tabs
 opt.tabstop = 8                     -- If a tab appears, show it as width 8
 opt.softtabstop = 4                 -- In files with tabs, use 4-space indents
 opt.shiftwidth = 4                  -- Use 4-space indents
-opt.smartindent = true              -- Indent the next line to the same level
+opt.shiftwidth = 4                  -- Use 4-space indents
+opt.expandtab = true                -- Write spaces instead of tabs
+opt.smartindent = false             -- Indent the next line to the same level
+opt.autoindent = false              -- Copy indent from current line to next
 
 -- Performance
 opt.swapfile = false                -- Don't use a swap file.
