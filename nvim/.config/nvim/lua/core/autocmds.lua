@@ -14,3 +14,11 @@ api.nvim_create_autocmd('BufRead', {
 --     pattern = { '*.yaml', '*.yml' },
 --     command = [[setlocal sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>]],
 -- })
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'help',
+    command = 'nnoremap <silent><buffer> q :q<cr>',
+    -- callback = function ()
+    --     api.nvim_buf_set_keymap(0, "n", "q", ":q<cr>", { silent = true })
+    -- end
+})
