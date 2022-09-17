@@ -90,6 +90,10 @@ cmp.setup {
         { name = 'path' },
         { name = 'calc' },
     }),
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
     formatting = {
         format = function(entry, vim_item)
           -- Add a label for the source as the "menu" string for each item
