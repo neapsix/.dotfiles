@@ -32,6 +32,12 @@ local mapping = {
     -- Ctrl+Space checks for completion manually.
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 
+    -- Change to the following if you run into the issue described in
+    -- https://github.com/hrsh7th/nvim-cmp/issues/531
+    -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({
+    --     reason = cmp.ContextReason.Auto,
+    --   }), { 'i', 'c' }),
+
     -- Disable Ctrl+Y. By default, Ctrl+Y confirms the selected suggestion.
     -- ['<C-y>'] = cmp.config.disable,
 
@@ -41,11 +47,11 @@ local mapping = {
         c = cmp.mapping.close(),
     }),
 
-    -- Return confirms the first suggestion.
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- Ctrl+y confirms the first suggestion.
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
 
-    -- Tab confirms the first suggestion or jumps into a snippet.
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    -- Ctrl+Tab confirms the first suggestion or jumps into a snippet.
+    ['<C-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
             -- cmp.select_next_item()
             cmp.confirm({ select = true })
@@ -58,7 +64,8 @@ local mapping = {
         end
     end, { "i", "s" }),
 
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    -- Ctrl+Shift+Tab jumps out of a snippet
+    ["<C-S-Tab>"] = cmp.mapping(function(fallback)
         -- if cmp.visible() then
         --      cmp.select_prev_item()
         --  elseif luasnip.jumpable(-1) then
@@ -71,6 +78,7 @@ local mapping = {
 }
 
 cmp.setup {
+    completion = { autocomplete = false },
     snippet = snippet,
     mapping = mapping,
     sources = cmp.config.sources({
