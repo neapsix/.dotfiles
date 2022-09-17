@@ -90,6 +90,20 @@ cmp.setup {
         { name = 'path' },
         { name = 'calc' },
     }),
+    formatting = {
+        format = function(entry, vim_item)
+          -- Add a label for the source as the "menu" string for each item
+          vim_item.menu = ({
+              nvim_lsp = "[LSP]",
+              nvim_lsp_signature_help = "[Signature]",
+              luasnip = "[LuaSnip]",
+              buffer = "[Buffer]",
+              path = "[Path]",
+              calc = "[Calc]",
+          })[entry.source.name]
+          return vim_item
+        end
+    },
     experimental = {
        ghost_text = true,
     }
