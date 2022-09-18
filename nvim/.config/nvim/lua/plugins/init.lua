@@ -17,8 +17,8 @@ paq:setup({verbose=false}) {
     'numToStr/Comment.nvim';
 
     -- Markdown
-    'godlygeek/tabular';
-    'preservim/vim-markdown';
+    -- 'godlygeek/tabular';
+    -- 'preservim/vim-markdown';
 
     -- Syntax features
     {'nvim-treesitter/nvim-treesitter', run='TSUpdate'};

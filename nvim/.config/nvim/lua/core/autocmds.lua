@@ -28,3 +28,29 @@ vim.api.nvim_create_autocmd('FileType', {
     --     api.nvim_buf_set_keymap(0, "n", "q", ":q<cr>", { silent = true })
     -- end
 })
+
+-- Markdown: Repeat bullets, numbered lists, and table leaders on the next line.
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'markdown',
+
+    -- Vim command version:
+    -- command = 'setlocal formatoptions+=r comments=b:-,b:*,b:+,b:>,b:|'
+
+    -- Lua version:
+    callback = function()
+        -- Add 'r' to repeat the comment leader character on a new line.
+        api.nvim_buf_set_option(
+            0,
+            'formatoptions',
+            api.nvim_buf_get_option(0, 'formatoptions') .. 'r'
+        )
+        -- Treat a bullet (-, *, +), blockquote (>), table (|), numbered list
+        -- (1.), empty or filled checkbox (- [ ] or - [x]) symbol followed by a
+        -- space as a single-line comment leader.
+        api.nvim_buf_set_option(
+            0,
+            'comments',
+            'b:- [ ],b:- [x],b:-,b:*,b:+,b:>,b:|,b:1.'
+        )
+    end,
+})
