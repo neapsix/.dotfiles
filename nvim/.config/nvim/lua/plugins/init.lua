@@ -79,6 +79,9 @@ vim.cmd[[colorscheme rose-pine]]
 require 'nvim-autopairs'.setup {}
 require 'Comment'.setup {}
 
+-- vim.g.vim_markdown_folding_level = 3
+-- vim.g.vim_markdown_new_list_item_indent = 2
+
 require 'plugins.config.nvim-treesitter'
 require 'tabout'.setup {}
 require 'colorizer'.setup {}
