@@ -16,3 +16,10 @@ map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
+
+-- Toggle diagnostic text with <leader>ll
+vim.keymap.set('n', '<Leader>ll', function()
+    vim.diagnostic.config {
+        virtual_text = not vim.diagnostic.config().virtual_text,
+    }
+end, { noremap = true, silent = true })

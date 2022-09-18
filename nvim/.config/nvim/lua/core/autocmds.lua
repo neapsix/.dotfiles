@@ -5,6 +5,13 @@
 -- API aliases for declaring settings below
 local api = vim.api
 
+-- Disable virtual text (linting) by default. Key in mappings.lua enables it.
+api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+        vim.diagnostic.config { virtual_text = false }
+    end,
+})
+
 -- YAML: Set file type to yaml.ansible if the file contains ansible stuff.
 api.nvim_create_autocmd('BufRead', {
     pattern = { '*.yaml', '*.yml' },
