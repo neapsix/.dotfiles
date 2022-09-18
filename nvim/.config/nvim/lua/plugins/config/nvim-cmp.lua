@@ -25,9 +25,9 @@ local mapping = {
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-j>'] = cmp.mapping.select_next_item(),
 
-    -- Ctrl+b and Ctrl+f scroll the docs window.
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    -- Ctrl+f and Ctrl+b scroll the docs window.
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 
     -- Ctrl+Space checks for completion manually.
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -48,10 +48,10 @@ local mapping = {
     }),
 
     -- Ctrl+y confirms the first suggestion.
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
 
-    -- Ctrl+Tab confirms the first suggestion or jumps into a snippet.
-    ['<C-Tab>'] = cmp.mapping(function(fallback)
+    -- Ctrl+y confirms the first suggestion or jumps into a snippet.
+    ['<C-y>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
             -- cmp.select_next_item()
             cmp.confirm({ select = true })
@@ -64,8 +64,8 @@ local mapping = {
         end
     end, { "i", "s" }),
 
-    -- Ctrl+Shift+Tab jumps out of a snippet
-    ["<C-S-Tab>"] = cmp.mapping(function(fallback)
+    -- Shift+y jumps out of a snippet
+    ["<S-y>"] = cmp.mapping(function(fallback)
         -- if cmp.visible() then
         --      cmp.select_prev_item()
         --  elseif luasnip.jumpable(-1) then
