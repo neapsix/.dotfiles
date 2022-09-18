@@ -90,6 +90,7 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 require 'plugins.config.null-ls'
 require 'plugins.config.nvim-lspconfig'
+require("luasnip.loaders.from_vscode").lazy_load()
 require 'plugins.config.trouble'
 require 'plugins.config.toggle-lsp-diagnostics'
 
