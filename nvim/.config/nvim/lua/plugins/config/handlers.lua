@@ -6,7 +6,7 @@ function M.on_attach(client, bufnr)
         ['gd'] = 'vim.lsp.buf.definition()',
         ['K'] = 'vim.lsp.buf.hover()',
         ['gi'] = 'vim.lsp.buf.implementation()',
-        ['<C-k>'] = 'vim.lsp.buf.signature_help()',
+        ['T'] = 'vim.lsp.buf.signature_help()',
         ['<Space>wa'] = 'vim.lsp.buf.add_workspace_folder()',
         ['<Space>wr'] = 'vim.lsp.buf.remove_workspace_folder()',
         ['<Space>wl'] = 'print(vim.inspect(vim.lsp.buf.list_workspace_folders()))',
