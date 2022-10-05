@@ -19,6 +19,9 @@ zstyle :compinstall filename '/Users/ben/.zshrc'
 
 export EDITOR=vi
 
+# if neovim is installed make that the default editor
+type nvim &>/dev/null && export EDITOR=nvim
+
 # Initialize bash completions too.
 
 # Determine what color things are in ls output.
@@ -34,6 +37,9 @@ case "$OSTYPE" in
         alias ls='ls --color=auto'
     ;;
 esac
+
+# if exa is installed, use it instead of ls
+type exa &>/dev/null && alias ls=exa
 
 # If dircolors is provided as gdircolors (as in brew coreutils), alias it.
 type gdircolors &>/dev/null && alias dircolors='gdircolors'
@@ -103,7 +109,7 @@ alias ud='ttdl undone'
 alias wtd='clear; while td; do sleep 2; clear; done'
 
 # alias to benchmark startup time while setting up nvim config
-alias nvim='nvim --startuptime /tmp/nvim-startuptime'
+# alias nvim='nvim --startuptime /tmp/nvim-startuptime'
 
 # Set zsh prompt
 PROMPT='%F{8}%m%f' # gray hostname
