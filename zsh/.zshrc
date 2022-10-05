@@ -71,11 +71,12 @@ if type brew &>/dev/null; then
 fi
 
 # Use python from brew if present
-type brew &>/dev/null && path=($(brew --prefix)/opt/python/libexec/bin $path)
+type brew &>/dev/null && path=(${HOMEBREW_PREFIX}/opt/python/libexec/bin $path)
 
 # If asdf is installed, use it. 
-test -r "/usr/local/opt/asdf/libexec/asdf.sh" && source "/usr/local/opt/asdf/libexec/asdf.sh"
-test -r "$HOME/.asdf/asdf.sh" && source "$HOME/.asdf/asdf.sh"
+test -r "${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh" && . "${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh"
+test -r "$HOME/.asdf/asdf.sh" && . "$HOME/.asdf/asdf.sh"
+test -r "$HOME/.asdf/plugins/java/set-java-home.zsh" && . "$HOME/.asdf/plugins/java/set-java-home.zsh"
 
 # Make asdf completions available (do before running compinit).
 test -r "$ASDF_DIR/completions" && fpath=(${ASDF_DIR}/completions $fpath)
