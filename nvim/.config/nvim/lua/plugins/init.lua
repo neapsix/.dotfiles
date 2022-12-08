@@ -44,6 +44,9 @@ paq:setup({verbose=false}) {
     'hrsh7th/cmp-calc';
     'hrsh7th/nvim-cmp';
 
+    -- Snippets
+    'rafamadriz/friendly-snippets';
+
     -- Git integration
     'lewis6991/gitsigns.nvim';
 
