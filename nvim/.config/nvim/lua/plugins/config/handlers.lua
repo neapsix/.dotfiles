@@ -14,7 +14,8 @@ function M.on_attach(client, bufnr)
         ['<Space>rn'] = 'vim.lsp.buf.rename()',
         ['<Space>ca'] = 'vim.lsp.buf.code_action()',
         -- ['<Space>gr'] = 'vim.lsp.buf.references', -- Replaced by trouble
-        ['<Space>f'] = 'vim.lsp.buf.formatting()',
+        -- ['<Space>f'] = 'vim.lsp.buf.formatting()', -- Deprecated function
+        ['<Space>f'] = 'vim.lsp.buf.format { async = true }',
     }
 
     for key, lua_string in pairs(mappings) do
