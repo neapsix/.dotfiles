@@ -16,7 +16,9 @@ local sources = {
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.code_actions.shellcheck,
     -- yaml
-    nls.builtins.formatting.yamlfmt,
+    nls.builtins.formatting.yamlfmt.with({
+        command = "yamlfix",
+    }),
 }
 
 local on_attach = require 'plugins.config.handlers'.on_attach

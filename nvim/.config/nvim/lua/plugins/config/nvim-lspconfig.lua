@@ -7,11 +7,12 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities)
+-- capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities)
+capabilities = require 'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 local on_attach = require 'plugins.config.handlers'.on_attach
 
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
             runtime = {
@@ -23,6 +24,7 @@ require 'lspconfig'.sumneko_lua.setup {
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file('', true),
+                checkThirdParty = false,
             },
             telemetry = {
                 enable = false,
