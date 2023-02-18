@@ -84,7 +84,10 @@ test -r "$ASDF_DIR/completions" && fpath=(${ASDF_DIR}/completions $fpath)
 # Aliases
 
 # ls flags
-alias la='ls -A'
+# BSD ls: -A shows hidden files (-a includes . and ..)
+# alias la='ls -A'
+# GNU ls and exa: -a shows hidden files (-aa includes . and ..)
+alias la='ls -a'
 alias ll='ls -alh'
 
 # grep for something in shell history
