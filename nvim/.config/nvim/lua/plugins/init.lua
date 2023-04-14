@@ -69,6 +69,10 @@ paq:setup({verbose=false}) {
 
 -- The user has to run :PaqInstall or :PaqSync once to pull everything
 
+require 'rose-pine'.setup {
+    dark_variant = 'moon',
+}
+
 -- Select a color scheme
 -- Note: Do this before setting up plugins that need to be themed
 -- vim.cmd[[colorscheme Base2Tone_EveningDark]]

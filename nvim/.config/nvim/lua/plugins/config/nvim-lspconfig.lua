@@ -35,6 +35,8 @@ require 'lspconfig'.lua_ls.setup {
     on_attach = on_attach,
 }
 
+require 'lspconfig'.gopls.setup {}
+
 require 'lspconfig'.ansiblels.setup {
     capabilities = capabilities,
     on_attach = on_attach,

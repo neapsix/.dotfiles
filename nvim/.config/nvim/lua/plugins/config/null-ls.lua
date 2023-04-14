@@ -19,6 +19,8 @@ local sources = {
     nls.builtins.formatting.yamlfmt.with({
         command = "yamlfix",
     }),
+    -- go
+    nls.builtins.formatting.gofmt,
 }
 
 local on_attach = require 'plugins.config.handlers'.on_attach
