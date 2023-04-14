@@ -1,12 +1,15 @@
 -- local wezterm = require 'wezterm';
 
-local colors = require 'lua/rose-pine'.colors()
-local window_frame = require 'lua/rose-pine'.window_frame()
+-- local colors = require 'lua/rose-pine'.colors()
+-- local window_frame = require 'lua/rose-pine'.window_frame()
+local colors = require 'lua/rose-pine-moon'.colors()
+local window_frame = require 'lua/rose-pine-moon'.window_frame()
 
 -- WezTerm config
 
 return {
     check_for_updates = false,
+    audible_bell = 'Disabled',
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     -- enable_scroll_bar = true,
