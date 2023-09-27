@@ -38,7 +38,7 @@ opt.lazyredraw = true               -- Improves performance with macros
 opt.synmaxcol = 240                 -- Stop highlighting syntax on long lines
 opt.updatetime = 400                -- Lower makes some plugins more responsive
 
-local disabled_built_ins = {
+local disabled_built_ins = {        -- Disable built-in plugins to start faster
     "netrw",
     "netrwPlugin",
     "netrwSettings",

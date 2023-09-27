@@ -12,6 +12,8 @@ capabilities = require 'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 local on_attach = require 'plugins.config.handlers'.on_attach
 
+require 'lspconfig'.awk_ls.setup {}
+
 require 'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
