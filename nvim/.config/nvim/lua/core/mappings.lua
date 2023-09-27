@@ -25,4 +25,5 @@ vim.keymap.set('n', '<Leader>ll', function()
     vim.diagnostic.config {
         virtual_text = not vim.diagnostic.config().virtual_text,
     }
+    print("virtual_text = "..tostring(vim.diagnostic.config().virtual_text))
 end, { noremap = true, silent = true })
