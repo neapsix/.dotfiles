@@ -17,6 +17,10 @@ case "$OSTYPE" in
   ;;
 esac
 
+# Add go path
+export GOPATH="$HOME/go"
+path=($path $GOPATH/bin)
+
 # Add rustup environment.
 test -r "$HOME/.cargo/env" && source "$HOME/.cargo/env"
 

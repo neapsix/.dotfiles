@@ -22,6 +22,7 @@ paq:setup { verbose = false } {
 
     -- Syntax features
     { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' },
+    'vrischmann/tree-sitter-templ',
     'abecodes/tabout.nvim',
     'norcalli/nvim-colorizer.lua',
 

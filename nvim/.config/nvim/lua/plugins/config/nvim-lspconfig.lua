@@ -49,8 +49,10 @@ require 'lspconfig'.pyright.setup {
     on_attach = on_attach,
 }
 
+require 'lspconfig'.templ.setup {}
+
 -- Non-Server Specific Mappings
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
