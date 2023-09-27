@@ -24,7 +24,7 @@ api.nvim_create_autocmd('BufRead', {
 -- })
 
 -- Help buffer: Press q to close the buffer.
-vim.api.nvim_create_autocmd('FileType', {
+api.nvim_create_autocmd('FileType', {
     pattern = 'help',
 
     -- Vim command version:
@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Markdown: Repeat bullets, numbered lists, and table leaders on the next line.
-vim.api.nvim_create_autocmd('FileType', {
+api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
 
     -- Vim command version:
@@ -59,5 +59,12 @@ vim.api.nvim_create_autocmd('FileType', {
             'comments',
             'b:- [ ],b:- [x],b:-,b:*,b:+,b:>,b:|,b:1.'
         )
+    end,
+})
+
+-- Highlight on yank using built-in function
+api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
     end,
 })
