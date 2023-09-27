@@ -52,6 +52,11 @@ paq:setup { verbose = false } {
 
     -- UI features
     'nvim-lualine/lualine.nvim',
+    'nvim-tree/nvim-web-devicons'; -- Req. for barbar, opt. for nvim-tree and neo-tree
+    -- 'romgrk/barbar.nvim';
+    'nvim-tree/nvim-tree.lua',
+    -- 'MunifTanjim/nui.nvim', -- Required for neo-tree
+    -- 'nvim-neo-tree/neo-tree.nvim',
     -- 'ellisonleao/glow.nvim';
     'neapsix/glow.nvim', -- Use my patched version of glow.nvim
     'nvim-telescope/telescope.nvim',
@@ -107,5 +112,10 @@ require 'plugins.config.nvim-cmp'
 require 'gitsigns'.setup {}
 
 require 'plugins.config.lualine'
+-- Alternative to managing buffers with telescope:
+-- require 'plugins.config.barbar'
+require 'plugins.config.nvim-tree'
+-- Alternative to nvim-tree:
+-- require 'plugins.config.neo-tree'
 vim.g.glow_no_install = true -- Config for patched glow.nvim
 require 'plugins.config.telescope'
