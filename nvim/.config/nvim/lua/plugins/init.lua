@@ -15,6 +15,10 @@ paq:setup { verbose = false } {
     -- Basic editor features
     'windwp/nvim-autopairs',
     'numToStr/Comment.nvim',
+    -- Note: editorconfig support is built in starting in neovim 0.9.
+    -- 'gpanders/editorconfig.nvim',
+    -- TODO: try okuuva/auto-save.nvim, fork of Pocco81/auto-save.nvim
+    'https://git.sr.ht/~nedia/auto-save.nvim',
 
     -- Syntax features
     { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' },
@@ -81,6 +85,10 @@ vim.cmd[[colorscheme rose-pine]]
 -- Run after-install setup for plugins that need it
 require 'nvim-autopairs'.setup {}
 require 'Comment'.setup {}
+-- Note: the simple auto-save plugin has an exclude_ft option to turn off auto-
+-- save for specified file types, but I would prefer an include_ft option to
+-- auto-save ONLY for certain types (e.g. markdown).
+require 'auto-save'.setup { silent = false }
 
 require 'plugins.config.nvim-treesitter'
 require 'tabout'.setup {}
