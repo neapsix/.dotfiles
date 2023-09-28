@@ -29,8 +29,10 @@ paq:setup { verbose = false } {
     -- LSP
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
+    -- 'jose-elias-alvarez/null-ls.nvim',
     'neovim/nvim-lspconfig',
+    'nvimdev/guard-collection',
+    'nvimdev/guard.nvim',
     'L3MON4D3/LuaSnip',
     'folke/trouble.nvim',
     'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim',
@@ -102,7 +104,8 @@ require 'colorizer'.setup {}
 
 require 'mason'.setup {}
 require 'mason-lspconfig'.setup {}
-require 'plugins.config.null-ls'
+-- require 'plugins.config.null-ls'
+require 'plugins.config.guard'
 require 'plugins.config.nvim-lspconfig'
 require 'luasnip.loaders.from_vscode'.lazy_load {}
 require 'plugins.config.trouble'
