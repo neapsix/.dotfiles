@@ -33,3 +33,5 @@ require 'nvim-treesitter.configs'.setup {
         enable = false,
     },
 }
+
+vim.treesitter.query.set("lua", "injections", "")
