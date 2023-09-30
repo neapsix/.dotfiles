@@ -5,9 +5,7 @@
 local ft = require 'guard.filetype'
 
 -- Built-in configurations from guard-collection
-ft('go'):fmt 'gofmt'
--- TODO: add golines
-ft('javascript,typescript,typescriptreact'):fmt 'prettier'
+ft('javascript,typescript,typescriptreact,html'):fmt 'prettier'
 -- TODO: maybe add json to the list for prettier.
 ft('lua'):fmt 'stylua'
 ft('python'):fmt 'black'
@@ -16,15 +14,14 @@ ft('sh'):lint 'shellcheck'
 
 -- Custom definitions
 
--- go templ (https://templ.guide)
--- Note: linting for templ is through lspconfig.
-ft('templ'):fmt {
-    cmd = 'templ',
-    args = {
-        'fmt',
-    },
-    stdin = true,
+-- go: run LSP formatting first, then run LSP organize imports using
+-- a function defined in the file with my lspconfig plugin options.
+ft('go'):fmt('lsp'):append {
+    fn = function()
+        require 'plugins.config.nvim-lspconfig'.gopls_organize_imports()
+    end,
 }
+-- TODO: add golines
 
 -- yamlfix
 -- Note: yamlfix uses - argument to read from stdin.

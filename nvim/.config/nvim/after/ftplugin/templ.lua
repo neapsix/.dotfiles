@@ -16,3 +16,5 @@ opt.colorcolumn = "81"
 -- Set text width to hard-wrap. Note: only comments are hard-wrapped.
 -- The format options (:set fo?) have c but not t (see :help fo-table).
 opt.textwidth = 80
+
+opt.formatoptions = "cqj"
