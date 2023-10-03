@@ -1,5 +1,5 @@
 --
--- settings.lua - General Neovim settings
+-- options.lua - General Neovim settings
 --
 
 -- API aliases for declaring settings below
@@ -13,7 +13,7 @@ opt.cot = 'menuone,noselect'        -- Enable completion (ignored with nvim-cmp)
 opt.hidden = true                   -- Enable hidden buffers
 
 -- UI
-opt.number = true
+opt.number = true                   -- Enable line numbers
 -- opt.colorcolumn = '80'           -- Add a ruler at column 80
 opt.showmatch = true                -- Show matching parentheses
 opt.linebreak = true                -- Wrap lines on words

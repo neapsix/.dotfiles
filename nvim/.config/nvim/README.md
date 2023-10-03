@@ -6,11 +6,13 @@ My configuration for Neovim.
 Deploy the configuration as described in the main README. The first time you use Neovim, run `:PaqSync` to install, remove, or update plugins.
 
 ## How It Works
-The configuration is broken up into modules, which are loaded from the main `init.lua` file. Each module is either a lua file or a directory containing its own `init.lua` file. 
+The configuration under `lua/` is broken up into modules, which are loaded from the main `init.lua` file. Each module is either a lua file or a directory containing its own `init.lua` file.
 
 Modules are loaded by running `require('path.to.module')`. To load a lua file, enter the file name without the file extension. To load a directory, make sure it contains an `init.lua` file, and enter the directory name.
 
 Modules under `core` contain configuration for Neovim itself. The `plugins` module sets up the package manager and loads sub-modules containing configuration for individual plugins.
+
+In addition to the lua configuration modules, some filetype-specific options that override the default filetype plugins are defined in lua files under `after/ftplugin`.
 
 ## Benchmarking
 To accurately measure startup time, use `hyperfine "nvim +q"`. To see how long each part takes, use the built-in option: `nvim --startuptime /path/to/file`.

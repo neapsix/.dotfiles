@@ -22,11 +22,13 @@ For example, in `~/.dotfiles/` run the following commands:
 
 ```
 $ stow bash
+$ stow nvim
 $ stow vim
+$ stow wezterm
 $ stow zsh
 ```
 
-to create `~/.bash_profile@`, `~/.bashrc@`, `~/.vimrc@`, `~/.zshenv@`, and `~/.zshrc@`.
+to create `~/.bash_profile@`, `~/.bashrc@`, the `~/.config/nvim@/` directory, `~/.vimrc@`, the `~/.config/wezterm@/` directory, `~/.zprofile`, `~/.zshenv@`, and `~/.zshrc@`.
 
 ### Create Symlinks Manually
 
@@ -35,7 +37,10 @@ If you don't want to use `stow`, you can also create the links manually. Using d
 ```
 $ ln -s .dotfiles/bash/.bash_profile .bash_profile
 $ ln -s .dotfiles/bash/.bashrc .bashrc
+$ ln -s .dotfiles/nvim/.config/nvim .config/nvim
 $ ln -s .dotfiles/vim/.vimrc .vimrc
+$ ln -s .dotfiles/nvim/.config/wezterm .config/wezterm
+$ ln -s .dotfiles/zsh/.zprofile .zprofile
 $ ln -s .dotfiles/zsh/.zshenv .zshenv
 $ ln -s .dotfiles/zsh/.zshrc .zshrc
 ```
