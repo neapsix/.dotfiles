@@ -36,6 +36,13 @@ paq:setup { verbose = false } {
     "folke/trouble.nvim",
     "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
 
+    -- DAP
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+
+    -- Language-specific debugger setup
+    "leoluz/nvim-dap-go",
+
     -- Completion
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lsp-signature-help",
@@ -109,6 +116,11 @@ require "plugins.config.trouble"
 require "plugins.config.toggle-lsp-diagnostics"
 
 require "plugins.config.nvim-cmp"
+
+require "plugins.config.nvim-dap"
+require "plugins.config.nvim-dap-ui"
+
+require("dap-go").setup {}
 
 require("gitsigns").setup {}
 
