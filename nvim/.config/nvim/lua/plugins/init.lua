@@ -33,6 +33,7 @@ paq:setup { verbose = false } {
     'neovim/nvim-lspconfig',
     -- 'nvimdev/guard-collection',
     -- 'nvimdev/guard.nvim',
+    'mfussenegger/nvim-lint',
     'stevearc/conform.nvim',
     'L3MON4D3/LuaSnip',
     'folke/trouble.nvim',
@@ -107,6 +108,7 @@ require 'mason'.setup {}
 require 'mason-lspconfig'.setup {}
 -- require 'plugins.config.null-ls'
 -- require 'plugins.config.guard'
+require 'plugins.config.nvim-lint'
 require 'plugins.config.conform'
 require 'plugins.config.nvim-lspconfig'
 require 'luasnip.loaders.from_vscode'.lazy_load {}
