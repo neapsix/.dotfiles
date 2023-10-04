@@ -6,6 +6,7 @@
 local opt = vim.opt
 local g = vim.g
 
+-- stylua: ignore start
 -- General
 opt.mouse = 'a'                     -- Enable the mouse
 opt.clipboard = 'unnamedplus'       -- Use the system clipboard
@@ -58,6 +59,7 @@ local disabled_built_ins = {        -- Disable built-in plugins to start faster
     "spellfile_plugin",
     "matchit"
 }
+-- stylua: ignore end
 
 for _, plugin in pairs(disabled_built_ins) do
     g["loaded_" .. plugin] = 1

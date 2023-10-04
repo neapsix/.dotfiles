@@ -1,7 +1,7 @@
 --
 -- plugins/config/null-ls.lua - config for null-ls plugin
 --
-local nls = require("null-ls")
+local nls = require "null-ls"
 
 local sources = {
     -- javascript and friends
@@ -16,16 +16,16 @@ local sources = {
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.code_actions.shellcheck,
     -- yaml
-    nls.builtins.formatting.yamlfmt.with({
+    nls.builtins.formatting.yamlfmt.with {
         command = "yamlfix",
-    }),
+    },
     -- go
     nls.builtins.formatting.gofmt,
 }
 
-local on_attach = require 'plugins.config.handlers'.on_attach
+local on_attach = require("plugins.config.handlers").on_attach
 
-nls.setup({
+nls.setup {
     sources = sources,
     on_attach = on_attach,
-})
+}
