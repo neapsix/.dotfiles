@@ -29,10 +29,7 @@ paq:setup { verbose = false } {
     -- LSP
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    -- 'jose-elias-alvarez/null-ls.nvim',
     "neovim/nvim-lspconfig",
-    -- 'nvimdev/guard-collection',
-    -- 'nvimdev/guard.nvim',
     "mfussenegger/nvim-lint",
     "stevearc/conform.nvim",
     "L3MON4D3/LuaSnip",
@@ -57,11 +54,9 @@ paq:setup { verbose = false } {
 
     -- UI features
     "nvim-lualine/lualine.nvim",
-    "nvim-tree/nvim-web-devicons", -- Req. for barbar, opt. for nvim-tree and neo-tree
+    "nvim-tree/nvim-web-devicons", -- Req. for barbar, opt. for nvim-tree
     -- 'romgrk/barbar.nvim';
     "nvim-tree/nvim-tree.lua",
-    -- 'MunifTanjim/nui.nvim', -- Required for neo-tree
-    -- 'nvim-neo-tree/neo-tree.nvim',
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
     "nvim-telescope/telescope.nvim",
@@ -106,8 +101,6 @@ require("colorizer").setup {}
 
 require("mason").setup {}
 require("mason-lspconfig").setup {}
--- require 'plugins.config.null-ls'
--- require 'plugins.config.guard'
 require "plugins.config.nvim-lint"
 require "plugins.config.conform"
 require "plugins.config.nvim-lspconfig"
@@ -123,7 +116,5 @@ require "plugins.config.lualine"
 -- Alternative to managing buffers with telescope:
 -- require 'plugins.config.barbar'
 require "plugins.config.nvim-tree"
--- Alternative to nvim-tree:
--- require 'plugins.config.neo-tree'
 vim.g.glow_no_install = true -- Config for patched glow.nvim
 require "plugins.config.telescope"
