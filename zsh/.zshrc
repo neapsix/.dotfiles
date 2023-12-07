@@ -38,8 +38,9 @@ case "$OSTYPE" in
     ;;
 esac
 
-# if exa is installed, use it instead of ls
+# if exa or eza is installed, use one of them instead of ls
 type exa &>/dev/null && alias ls=exa
+type eza &>/dev/null && alias ls=eza
 
 # If dircolors is provided as gdircolors (as in brew coreutils), alias it.
 type gdircolors &>/dev/null && alias dircolors='gdircolors'
