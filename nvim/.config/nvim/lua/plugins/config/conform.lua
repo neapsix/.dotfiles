@@ -9,6 +9,8 @@
 
 require("conform").setup {
     formatters_by_ft = {
+        -- c = { "indent" },
+        c = { "clang_format" },
         lua = { "stylua" },
         -- go = { "golines" }
         python = { "black" },
@@ -30,6 +32,17 @@ require("conform").setup {
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
+    },
+    formatters = {
+        -- indent = {
+        --     command = "/opt/homebrew/bin/gindent",
+        --     prepend_args = { "-kr" },
+        -- },
+        clang_format = {
+            prepend_args = {
+                "--style={BasedOnStyle: LLVM, UseTab: Always, IndentWidth: 8, TabWidth: 8, BreakBeforeBraces: Linux}",
+            },
+        },
     },
 }
 
