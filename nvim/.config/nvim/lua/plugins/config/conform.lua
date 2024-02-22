@@ -12,11 +12,10 @@ require("conform").setup {
         -- c = { "indent" },
         c = { "clang_format" },
         lua = { "stylua" },
-        -- go = { "golines" }
         python = { "black" },
+        -- Note: go and templ are formatted with LSP
+        -- go = { "golines" },
         -- templ = { "templ" },
-        -- TODO: check wth filetypes yaml.ansible and yml.
-        -- yaml = { "yamlfix" },
 
         -- javascript and friends
         -- TODO: use { {"prettierd", "prettier" } }
@@ -32,6 +31,8 @@ require("conform").setup {
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         yaml = { "prettier" },
+        -- TODO: check wth filetypes yaml.ansible and yml.
+        -- yaml = { "yamlfix" },
     },
     formatters = {
         -- indent = {
@@ -73,4 +74,5 @@ vim.api.nvim_create_user_command("Format", function(args)
 end, { range = true })
 
 -- Key mapping for the command above.
-vim.keymap.set("n", "<Space>f", ":Format<CR>", { silent = true })
+-- vim.keymap.set({ "n", "v" }, "<Space>f", ":Format<CR>", { silent = true })
+vim.keymap.set({ "n", "v" }, "<Space>f", ":Format<CR>", {})
