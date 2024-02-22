@@ -21,7 +21,7 @@ paq:setup { verbose = false } {
     -- 'https://git.sr.ht/~nedia/auto-save.nvim',
 
     -- Syntax features
-    { "nvim-treesitter/nvim-treesitter", run = "TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "vrischmann/tree-sitter-templ",
     "abecodes/tabout.nvim",
     "norcalli/nvim-colorizer.lua",
@@ -67,7 +67,7 @@ paq:setup { verbose = false } {
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
     "nvim-telescope/telescope.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-telescope/telescope-file-browser.nvim",
 
     -- Color schemes
