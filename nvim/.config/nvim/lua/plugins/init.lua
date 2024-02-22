@@ -62,13 +62,12 @@ paq:setup { verbose = false } {
     -- UI features
     "nvim-lualine/lualine.nvim",
     "nvim-tree/nvim-web-devicons", -- Req. for barbar, opt. for nvim-tree
-    -- 'romgrk/barbar.nvim';
+    'romgrk/barbar.nvim';
     "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
-    "nvim-telescope/telescope.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "nvim-telescope/telescope-file-browser.nvim",
+    "mfussenegger/nvim-fzy",
+    "mfussenegger/nvim-qwahl",
 
     -- Color schemes
     -- 'atelierbram/Base2Tone-vim';
@@ -125,8 +124,9 @@ require("dap-go").setup {}
 require("gitsigns").setup {}
 
 require "plugins.config.lualine"
--- Alternative to managing buffers with telescope:
--- require 'plugins.config.barbar'
+-- Alternative to managing buffers and files with fzy:
+require "plugins.config.barbar"
 require "plugins.config.nvim-tree"
 vim.g.glow_no_install = true -- Config for patched glow.nvim
-require "plugins.config.telescope"
+require "plugins.config.nvim-fzy"
+require "plugins.config.nvim-qwahl"

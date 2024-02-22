@@ -20,6 +20,9 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
+-- Close buffers with <leader>q
+map("n", "<leader>q", "<cmd>BufferClose<CR>")
+
 -- Toggle diagnostic text with <leader>ll
 vim.keymap.set("n", "<Leader>ll", function()
     vim.diagnostic.config {
