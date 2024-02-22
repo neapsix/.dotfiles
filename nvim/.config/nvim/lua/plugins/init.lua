@@ -70,28 +70,32 @@ paq:setup { verbose = false } {
     "mfussenegger/nvim-qwahl",
 
     -- Color schemes
-    -- 'atelierbram/Base2Tone-vim';
-    -- 'sainnhe/everforest';
-    -- 'shaunsingh/nord.nvim';
-    -- 'bluz71/vim-nightfly-guicolors';
-    -- 'rafamadriz/neon';
-    "rose-pine/neovim",
+    -- "shaunsingh/nord.nvim";
+    -- "AlexvZyl/nordic.nvim",
+    -- "rose-pine/neovim",
+    -- "catppuccin/nvim",
+    -- "folke/tokyonight.nvim",
+    "nyoom-engineering/oxocarbon.nvim",
 }
 
 -- The user has to run :PaqInstall or :PaqSync once to pull everything
 
-require("rose-pine").setup {
-    dark_variant = "moon",
-}
+-- require("rose-pine").setup {
+--     dark_variant = "moon",
+-- }
+
+-- require("catppuccin").setup {
+--     flavour = "frappe",
+-- }
 
 -- Select a color scheme
 -- Note: Do this before setting up plugins that need to be themed
--- vim.cmd[[colorscheme Base2Tone_EveningDark]]
--- vim.cmd[[colorscheme everforest]]
 -- vim.cmd[[colorscheme nord]]
--- vim.cmd[[colorscheme nightfly]]
--- vim.cmd[[colorscheme neon]]
-vim.cmd [[colorscheme rose-pine]]
+-- vim.cmd [[colorscheme nordic]]
+-- vim.cmd [[colorscheme rose-pine]]
+-- vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme oxocarbon]]
 
 -- Run after-install setup for plugins that need it
 require("nvim-autopairs").setup {}

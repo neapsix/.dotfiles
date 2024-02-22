@@ -5,7 +5,8 @@
 require("lualine").setup {
     options = {
         icons_enabled = false,
-        theme = "rose-pine",
+        -- theme = "rose-pine",
+        -- theme = "oxocarbon",
         component_separators = { left = "|", right = "|" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
