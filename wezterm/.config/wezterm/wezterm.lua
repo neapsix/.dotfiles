@@ -1,9 +1,9 @@
 -- local wezterm = require 'wezterm';
 
--- local colors = require 'lua/rose-pine'.colors()
--- local window_frame = require 'lua/rose-pine'.window_frame()
-local colors = require 'lua/rose-pine-moon'.colors()
-local window_frame = require 'lua/rose-pine-moon'.window_frame()
+local colors = require 'lua/rose-pine'.colors()
+local window_frame = require 'lua/rose-pine'.window_frame()
+-- local colors = require 'lua/rose-pine-moon'.colors()
+-- local window_frame = require 'lua/rose-pine-moon'.window_frame()
 
 -- WezTerm config
 
@@ -13,10 +13,13 @@ return {
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = false,
     -- enable_scroll_bar = true,
-    line_height = 1.1,
-    -- font = wezterm.font("Victor Mono", {weight="Medium"}),
-    -- font = wezterm.font("Fira Code"),
-    font_size = 14,
+    -- line_height = 1.1,
+    -- dpi = 144,
+    -- font = require("wezterm").font("Victor Mono", {weight="Medium"}),
+    -- font = require("wezterm").font("Fira Code"),
+    -- font = require("wezterm").font("Monaspace Neon"),
+    font = require("wezterm").font("IBM Plex Mono"),
+    font_size = 14.5,
     -- freetype_load_target = "Light",
     -- color_scheme = 'rose-pine',
     window_padding = {
