@@ -2,26 +2,17 @@
 -- mappings.lua - Key mappings for Neovim
 --
 
--- Snippet for easier key mapping syntax
-local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 -- Clear highlighting with Esc
-map("n", "<Esc>", "<cmd> noh <CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>")
 
 -- Move around splits using Ctrl + {h,j,k,l}
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
--- Close buffers with <leader>q
-map("n", "<leader>q", "<cmd>BufferClose<CR>")
+-- Close buffers with <leader>bd
+vim.keymap.set("n", "<leader>bd", "<cmd>BufferClose<CR>")
 
 -- Toggle diagnostic text with <leader>ll
 vim.keymap.set("n", "<Leader>ll", function()
@@ -29,4 +20,4 @@ vim.keymap.set("n", "<Leader>ll", function()
         virtual_text = not vim.diagnostic.config().virtual_text,
     }
     print("virtual_text = " .. tostring(vim.diagnostic.config().virtual_text))
-end, { noremap = true, silent = true })
+end)
