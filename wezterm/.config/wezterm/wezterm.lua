@@ -1,11 +1,7 @@
--- local wezterm = require 'wezterm';
-
-local colors = require 'lua/rose-pine'.colors()
-local window_frame = require 'lua/rose-pine'.window_frame()
--- local colors = require 'lua/rose-pine-moon'.colors()
--- local window_frame = require 'lua/rose-pine-moon'.window_frame()
-
 -- WezTerm config
+
+local wezterm = require('wezterm')
+local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
 
 return {
     check_for_updates = false,
@@ -28,8 +24,8 @@ return {
         top = 2,
         bottom = 2,
     },
-    colors = colors,
-    window_frame = window_frame,
+    colors = theme.colors(),
+    window_frame = theme.window_frame(),
     -- keys = {
     --     {key="L", mods="CTRL", action="ShowDebugOverlay"},
     --     {key="R", mods="CTRL", action="ReloadConfiguration"}
