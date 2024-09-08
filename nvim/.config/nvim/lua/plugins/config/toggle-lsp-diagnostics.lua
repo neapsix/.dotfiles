@@ -1,9 +1,10 @@
-require("toggle_lsp_diagnostics").init {}
+--
+-- plugins/config/toggle-lsp-diagnostics.lua - config for
+--   toggle-lsp-diagnostics.nvim plugin
+--
 
-local options = { noremap = true, silent = true }
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>lsp",
-    "<cmd>lua require [[toggle_lsp_diagnostics]].toggle_diagnostics()<cr>",
-    options
-)
+local t = require "toggle_lsp_diagnostics"
+
+t.init()
+
+vim.keymap.set("n", "<Leader>lsp", t.toggle_diagnostics)
