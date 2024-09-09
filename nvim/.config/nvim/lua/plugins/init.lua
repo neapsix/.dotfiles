@@ -64,7 +64,7 @@ paq:setup { verbose = false } {
     -- UI features
     -- Note: Tried mini.statusline but prefer lualine
     "nvim-lualine/lualine.nvim",
-    'romgrk/barbar.nvim';
+    "romgrk/barbar.nvim",
     "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
@@ -75,9 +75,9 @@ paq:setup { verbose = false } {
     -- "shaunsingh/nord.nvim";
     -- "AlexvZyl/nordic.nvim",
     -- "rose-pine/neovim",
-    -- "catppuccin/nvim",
+    "catppuccin/nvim",
     -- "folke/tokyonight.nvim",
-    "nyoom-engineering/oxocarbon.nvim",
+    -- "nyoom-engineering/oxocarbon.nvim",
 }
 
 -- The user has to run :PaqInstall or :PaqSync once to pull everything
@@ -86,18 +86,18 @@ paq:setup { verbose = false } {
 --     dark_variant = "moon",
 -- }
 
--- require("catppuccin").setup {
---     flavour = "frappe",
--- }
+require("catppuccin").setup {
+    flavour = "mocha",
+}
 
 -- Select a color scheme
 -- Note: Do this before setting up plugins that need to be themed
--- vim.cmd[[colorscheme nord]]
+-- vim.cmd [[colorscheme nord]]
 -- vim.cmd [[colorscheme nordic]]
 -- vim.cmd [[colorscheme rose-pine]]
--- vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme catppuccin]]
 -- vim.cmd [[colorscheme tokyonight]]
-vim.cmd [[colorscheme oxocarbon]]
+-- vim.cmd [[colorscheme oxocarbon]]
 
 -- Run after-install setup for plugins that need it
 require("nvim-autopairs").setup {}

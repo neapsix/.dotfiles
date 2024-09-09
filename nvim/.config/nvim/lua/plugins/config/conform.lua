@@ -35,13 +35,9 @@ require("conform").setup {
         -- yaml = { "yamlfix" },
     },
     formatters = {
-        -- indent = {
-        --     command = "/opt/homebrew/bin/gindent",
-        --     prepend_args = { "-kr" },
-        -- },
         clang_format = {
             prepend_args = {
-                "--style={BasedOnStyle: LLVM, UseTab: Always, IndentWidth: 8, TabWidth: 8, BreakBeforeBraces: Linux}",
+                "--style={BasedOnStyle: LLVM, UseTab: Always, IndentWidth: 8, TabWidth: 8, BreakBeforeBraces: Linux, ColumnLimit: 120}",
             },
         },
     },
@@ -74,5 +70,4 @@ vim.api.nvim_create_user_command("Format", function(args)
 end, { range = true })
 
 -- Key mapping for the command above.
--- vim.keymap.set({ "n", "v" }, "<Space>f", ":Format<CR>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<Space>f", ":Format<CR>", {})
+vim.keymap.set({ "n", "v" }, "<Space>f", ":Format<CR>")

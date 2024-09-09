@@ -14,7 +14,7 @@ parser_config.templ = {
 vim.treesitter.language.register("templ", "templ")
 
 require("nvim-treesitter.configs").setup {
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "beancount" },
 
     auto_install = false,
 
