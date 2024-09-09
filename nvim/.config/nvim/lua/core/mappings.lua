@@ -21,3 +21,9 @@ vim.keymap.set("n", "<Leader>ll", function()
     }
     print("virtual_text = " .. tostring(vim.diagnostic.config().virtual_text))
 end)
+
+-- Toggle diagnostics altogether with <leader>lsp
+vim.keymap.set("n", "<Leader>lsp", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+    print("vim.diagnostic.is_enabled() = " .. tostring(vim.diagnostic.is_enabled()))
+end)

@@ -34,7 +34,6 @@ paq:setup { verbose = false } {
     "stevearc/conform.nvim",
     "L3MON4D3/LuaSnip",
     "folke/trouble.nvim",
-    "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
 
     -- DAP
     "mfussenegger/nvim-dap",
@@ -116,7 +115,6 @@ require "plugins.config.conform"
 require "plugins.config.nvim-lspconfig"
 require("luasnip.loaders.from_vscode").lazy_load {}
 require "plugins.config.trouble"
-require "plugins.config.toggle-lsp-diagnostics"
 
 require "plugins.config.nvim-cmp"
 
