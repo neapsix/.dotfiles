@@ -13,12 +13,17 @@ paq:setup { verbose = false } {
     "nvim-lua/plenary.nvim",
 
     -- Basic editor features
+    -- Note: Prefer this plugin to mini.pairs for integration with cmp
     "windwp/nvim-autopairs",
+    -- Note: Prefer this plugin to built-in commenting and mini.comment
+    -- for block comments and horizontal motions, e.g. gc$.
     "numToStr/Comment.nvim",
     -- Note: editorconfig support is built in starting in neovim 0.9.
     -- 'gpanders/editorconfig.nvim',
     -- TODO: try okuuva/auto-save.nvim, fork of Pocco81/auto-save.nvim
     -- 'https://git.sr.ht/~nedia/auto-save.nvim',
+
+    "echasnovski/mini.nvim",
 
     -- Syntax features
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -56,12 +61,9 @@ paq:setup { verbose = false } {
     -- Snippets
     "rafamadriz/friendly-snippets",
 
-    -- Git integration
-    "lewis6991/gitsigns.nvim",
-
     -- UI features
+    -- Note: Tried mini.statusline but prefer lualine
     "nvim-lualine/lualine.nvim",
-    "nvim-tree/nvim-web-devicons", -- Req. for barbar, opt. for nvim-tree
     'romgrk/barbar.nvim';
     "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
@@ -104,6 +106,10 @@ require("Comment").setup {}
 -- save for specified file types, but I would prefer an include_ft option to
 -- auto-save ONLY for certain types (e.g. markdown).
 -- require 'auto-save'.setup { silent = false }
+require "plugins.config.mini.diff"
+require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
+require "plugins.config.mini.map"
+require("mini.splitjoin").setup {}
 
 require "plugins.config.nvim-treesitter"
 require("colorizer").setup {}
@@ -124,8 +130,6 @@ require "plugins.config.nvim-dap"
 require "plugins.config.nvim-dap-ui"
 
 require("dap-go").setup {}
-
-require("gitsigns").setup {}
 
 require "plugins.config.lualine"
 -- Alternative to managing buffers and files with fzy:
