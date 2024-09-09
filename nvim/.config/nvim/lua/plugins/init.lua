@@ -36,6 +36,7 @@ paq:setup { verbose = false } {
     "folke/trouble.nvim",
 
     -- DAP
+    "nvim-neotest/nvim-nio",
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
 
@@ -105,7 +106,6 @@ require("Comment").setup {}
 -- require 'auto-save'.setup { silent = false }
 
 require "plugins.config.nvim-treesitter"
-require("tabout").setup {}
 require("colorizer").setup {}
 
 require("mason").setup {}
@@ -117,6 +117,8 @@ require("luasnip.loaders.from_vscode").lazy_load {}
 require "plugins.config.trouble"
 
 require "plugins.config.nvim-cmp"
+-- If a completion plugin is using tabs, load tabout after.
+require("tabout").setup {}
 
 require "plugins.config.nvim-dap"
 require "plugins.config.nvim-dap-ui"
