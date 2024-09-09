@@ -11,8 +11,15 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
+-- Next/prev/first/last buffer with ]B ]b [b [B
+-- Note: mini.bracketed provides a more complete version.
+vim.keymap.set("n", "[B", "<cmd>bfirst<CR>")
+vim.keymap.set("n", "[b", "<cmd>bNext<CR>")
+vim.keymap.set("n", "]b", "<cmd>bnext<CR>")
+vim.keymap.set("n", "]B", "<cmd>blast<CR>")
+
 -- Close buffers with <leader>bd
-vim.keymap.set("n", "<leader>bd", "<cmd>BufferClose<CR>")
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>")
 
 -- Toggle diagnostic text with <leader>ll
 vim.keymap.set("n", "<Leader>ll", function()

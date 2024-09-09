@@ -1,5 +1,5 @@
 --
--- plugins.lua - Plugins for Neovim
+-- plugins/init.lua - Plugins for Neovim
 --
 
 -- Install paq if it's not installed
@@ -8,9 +8,6 @@ local paq = require("plugins.bootstrap_paq").bootstrap_paq()
 -- Install plugins
 paq:setup { verbose = false } {
     "savq/paq-nvim",
-
-    -- Libraries
-    "nvim-lua/plenary.nvim",
 
     -- Basic editor features
     -- Note: Prefer this plugin to mini.pairs for integration with cmp
@@ -64,8 +61,7 @@ paq:setup { verbose = false } {
     -- UI features
     -- Note: Tried mini.statusline but prefer lualine
     "nvim-lualine/lualine.nvim",
-    "romgrk/barbar.nvim",
-    "nvim-tree/nvim-tree.lua",
+    -- "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
     "mfussenegger/nvim-fzy",
@@ -106,7 +102,9 @@ require("Comment").setup {}
 -- save for specified file types, but I would prefer an include_ft option to
 -- auto-save ONLY for certain types (e.g. markdown).
 -- require 'auto-save'.setup { silent = false }
+-- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
 require "plugins.config.mini.diff"
+require "plugins.config.mini.files"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
 require "plugins.config.mini.map"
 require("mini.splitjoin").setup {}
@@ -123,7 +121,7 @@ require("luasnip.loaders.from_vscode").lazy_load {}
 require "plugins.config.trouble"
 
 require "plugins.config.nvim-cmp"
--- If a completion plugin is using tabs, load tabout after.
+-- If a completion plugin uses the tab key, load tabout after.
 require("tabout").setup {}
 
 require "plugins.config.nvim-dap"
@@ -132,9 +130,7 @@ require "plugins.config.nvim-dap-ui"
 require("dap-go").setup {}
 
 require "plugins.config.lualine"
--- Alternative to managing buffers and files with fzy:
-require "plugins.config.barbar"
-require "plugins.config.nvim-tree"
+-- require "plugins.config.nvim-tree"
 vim.g.glow_no_install = true -- Config for patched glow.nvim
 require "plugins.config.nvim-fzy"
 require "plugins.config.nvim-qwahl"
