@@ -26,7 +26,6 @@ paq:setup { verbose = false } {
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "vrischmann/tree-sitter-templ",
     "abecodes/tabout.nvim",
-    "norcalli/nvim-colorizer.lua",
 
     -- LSP
     "williamboman/mason.nvim",
@@ -105,12 +104,12 @@ require("Comment").setup {}
 -- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
 require "plugins.config.mini.diff"
 require "plugins.config.mini.files"
+require "plugins.config.mini.hipatterns"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
 require "plugins.config.mini.map"
 require("mini.splitjoin").setup {}
 
 require "plugins.config.nvim-treesitter"
-require("colorizer").setup {}
 
 require("mason").setup {}
 require("mason-lspconfig").setup {}
