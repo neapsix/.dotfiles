@@ -20,6 +20,7 @@ vim.keymap.set("n", "]B", "<cmd>blast<CR>")
 
 -- Close buffers with <leader>bd
 vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>")
+vim.keymap.set("n", "<leader>bu", "<cmd>bu<CR>")
 
 -- Toggle diagnostic text with <leader>ll
 vim.keymap.set("n", "<Leader>ll", function()

@@ -102,11 +102,13 @@ require("Comment").setup {}
 -- auto-save ONLY for certain types (e.g. markdown).
 -- require 'auto-save'.setup { silent = false }
 -- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
+require "plugins.config.mini.bufremove"
 require "plugins.config.mini.diff"
 require "plugins.config.mini.files"
 require "plugins.config.mini.hipatterns"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
 require "plugins.config.mini.map"
+require "plugins.config.mini.sessions"
 require("mini.splitjoin").setup {}
 
 require "plugins.config.nvim-treesitter"
