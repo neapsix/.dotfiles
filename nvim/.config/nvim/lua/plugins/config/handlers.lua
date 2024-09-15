@@ -26,6 +26,8 @@ function M.on_attach(client, bufnr)
 
         vim.api.nvim_set_keymap("n", key, command_string, options)
     end
+
+   -- vim.o.omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
 end
 
 return M

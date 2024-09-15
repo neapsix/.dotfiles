@@ -29,7 +29,6 @@ paq:setup { verbose = false } {
     "neovim/nvim-lspconfig",
     "mfussenegger/nvim-lint",
     "stevearc/conform.nvim",
-    "L3MON4D3/LuaSnip",
     "folke/trouble.nvim",
 
     -- DAP
@@ -43,7 +42,6 @@ paq:setup { verbose = false } {
     -- Completion
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lsp-signature-help",
-    "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
@@ -51,6 +49,8 @@ paq:setup { verbose = false } {
     "hrsh7th/nvim-cmp",
 
     -- Snippets
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
 
     -- UI features
@@ -92,9 +92,14 @@ vim.cmd [[colorscheme tokyonight]]
 
 -- Run after-install setup for plugins that need it
 require("nvim-autopairs").setup {}
+-- Make sure nothing remaps <CR> after this.
+-- require("mini.pairs").setup {}
+-- Make sure nothing remaps <CR> after this.
 require("Comment").setup {}
 -- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
 require "plugins.config.mini.bufremove"
+-- Load mini.completion after mini.pairs
+-- require "plugins.config.mini.completion"
 require "plugins.config.mini.diff"
 require "plugins.config.mini.files"
 require "plugins.config.mini.hipatterns"
@@ -112,7 +117,7 @@ require("mason-lspconfig").setup {}
 require "plugins.config.nvim-lint"
 require "plugins.config.conform"
 require "plugins.config.nvim-lspconfig"
-require("luasnip.loaders.from_vscode").lazy_load {}
+require "plugins.config.luasnip"
 require "plugins.config.trouble"
 
 require "plugins.config.nvim-cmp"
