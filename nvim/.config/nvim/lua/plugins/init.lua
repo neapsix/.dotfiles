@@ -59,8 +59,8 @@ paq:setup { verbose = false } {
     -- "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
-    "mfussenegger/nvim-fzy",
-    "mfussenegger/nvim-qwahl",
+    -- "mfussenegger/nvim-fzy",
+    -- "mfussenegger/nvim-qwahl",
 
     -- Color schemes
     -- "shaunsingh/nord.nvim";
@@ -102,6 +102,8 @@ require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
 require "plugins.config.mini.map"
 require "plugins.config.mini.sessions"
 require("mini.splitjoin").setup {}
+require("mini.surround").setup {}
+require "plugins.config.mini.pick"
 
 require "plugins.config.nvim-treesitter"
 
@@ -125,5 +127,5 @@ require("dap-go").setup {}
 require "plugins.config.lualine"
 -- require "plugins.config.nvim-tree"
 vim.g.glow_no_install = true -- Config for patched glow.nvim
-require "plugins.config.nvim-fzy"
-require "plugins.config.nvim-qwahl"
+-- require "plugins.config.nvim-fzy"
+-- require "plugins.config.nvim-qwahl"
