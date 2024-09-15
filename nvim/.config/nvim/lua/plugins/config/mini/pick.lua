@@ -14,3 +14,7 @@ vim.keymap.set("n", "<leader>fG", MiniPick.builtin.grep)
 vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers)
 vim.keymap.set("n", "<leader>fh", MiniPick.builtin.help)
 
+-- Lo-fi alternative to trouble.nvim
+-- require("mini.extra").setup {}
+--
+-- vim.keymap.set("n", "<leader>fd", MiniExtra.pickers.diagnostic)
