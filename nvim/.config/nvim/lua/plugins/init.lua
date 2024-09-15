@@ -15,10 +15,6 @@ paq:setup { verbose = false } {
     -- Note: Prefer this plugin to built-in commenting and mini.comment
     -- for block comments and horizontal motions, e.g. gc$.
     "numToStr/Comment.nvim",
-    -- Note: editorconfig support is built in starting in neovim 0.9.
-    -- 'gpanders/editorconfig.nvim',
-    -- TODO: try okuuva/auto-save.nvim, fork of Pocco81/auto-save.nvim
-    -- 'https://git.sr.ht/~nedia/auto-save.nvim',
 
     "echasnovski/mini.nvim",
 
@@ -70,8 +66,8 @@ paq:setup { verbose = false } {
     -- "shaunsingh/nord.nvim";
     -- "AlexvZyl/nordic.nvim",
     -- "rose-pine/neovim",
-    "catppuccin/nvim",
-    -- "folke/tokyonight.nvim",
+    -- "catppuccin/nvim",
+    "folke/tokyonight.nvim",
     -- "nyoom-engineering/oxocarbon.nvim",
 }
 
@@ -81,26 +77,22 @@ paq:setup { verbose = false } {
 --     dark_variant = "moon",
 -- }
 
-require("catppuccin").setup {
-    flavour = "mocha",
-}
+-- require("catppuccin").setup {
+--     flavour = "mocha",
+-- }
 
 -- Select a color scheme
 -- Note: Do this before setting up plugins that need to be themed
 -- vim.cmd [[colorscheme nord]]
 -- vim.cmd [[colorscheme nordic]]
 -- vim.cmd [[colorscheme rose-pine]]
-vim.cmd [[colorscheme catppuccin]]
--- vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme tokyonight]]
 -- vim.cmd [[colorscheme oxocarbon]]
 
 -- Run after-install setup for plugins that need it
 require("nvim-autopairs").setup {}
 require("Comment").setup {}
--- Note: the simple auto-save plugin has an exclude_ft option to turn off auto-
--- save for specified file types, but I would prefer an include_ft option to
--- auto-save ONLY for certain types (e.g. markdown).
--- require 'auto-save'.setup { silent = false }
 -- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
 require "plugins.config.mini.bufremove"
 require "plugins.config.mini.diff"
