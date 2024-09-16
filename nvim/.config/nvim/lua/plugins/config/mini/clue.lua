@@ -32,6 +32,10 @@ miniclue.setup {
         -- Window commands
         { mode = "n", keys = "<C-w>" },
 
+        -- `s` key (mini.surround)
+        { mode = "n", keys = "s" },
+        { mode = "x", keys = "s" },
+
         -- `z` key
         { mode = "n", keys = "z" },
         { mode = "x", keys = "z" },
@@ -44,6 +48,14 @@ miniclue.setup {
         miniclue.gen_clues.registers(),
         miniclue.gen_clues.windows(),
         miniclue.gen_clues.z(),
+        { mode = "n", keys = "<Leader>b", desc = "+Buffers" },
+        { mode = "n", keys = "<Leader>c", desc = "+Refs" },
+        { mode = "n", keys = "<Leader>d", desc = "+DAP" },
+        { mode = "n", keys = "<Leader>f", desc = "+Pickers" },
+        { mode = "n", keys = "<Leader>g", desc = "+Git" },
+        { mode = "n", keys = "<Leader>l", desc = "+LSP" },
+        { mode = "n", keys = "<Leader>s", desc = "+Sessions" },
+        { mode = "n", keys = "<Leader>x", desc = "+Trouble" },
     },
 }
 

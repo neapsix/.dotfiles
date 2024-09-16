@@ -96,6 +96,7 @@ require("nvim-autopairs").setup {}
 -- require("mini.pairs").setup {}
 -- Make sure nothing remaps <CR> after this.
 require("Comment").setup {}
+require("mini.ai").setup {}
 -- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
 require "plugins.config.mini.bufremove"
 require "plugins.config.mini.clue"
@@ -106,10 +107,10 @@ require "plugins.config.mini.files"
 require "plugins.config.mini.hipatterns"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
 require "plugins.config.mini.map"
+require "plugins.config.mini.pick"
 require "plugins.config.mini.sessions"
 require("mini.splitjoin").setup {}
 require("mini.surround").setup {}
-require "plugins.config.mini.pick"
 
 require "plugins.config.nvim-treesitter"
 
