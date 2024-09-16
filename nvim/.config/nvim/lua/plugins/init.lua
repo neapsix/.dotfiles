@@ -98,6 +98,7 @@ require("nvim-autopairs").setup {}
 require("Comment").setup {}
 -- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
 require "plugins.config.mini.bufremove"
+require "plugins.config.mini.clue"
 -- Load mini.completion after mini.pairs
 -- require "plugins.config.mini.completion"
 require "plugins.config.mini.diff"

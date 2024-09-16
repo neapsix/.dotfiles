@@ -34,4 +34,4 @@ map.setup {
     },
 }
 
-vim.keymap.set("n", "<leader>mm", map.toggle)
+vim.keymap.set("n", "<leader>mm", map.toggle, { desc = "mini.map toggle" })

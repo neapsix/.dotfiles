@@ -8,5 +8,5 @@ local minifiles_toggle = function(...)
     if not MiniFiles.close() then MiniFiles.open(...) end
 end
 
-vim.keymap.set("n", "<leader>F", minifiles_toggle)
+vim.keymap.set("n", "<leader>F", minifiles_toggle, { desc = "mini.files toggle" })
 

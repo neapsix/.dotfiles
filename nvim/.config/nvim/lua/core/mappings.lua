@@ -13,14 +13,14 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Next/prev/first/last buffer with ]B ]b [b [B
 -- Note: mini.bracketed provides a more complete version.
-vim.keymap.set("n", "[B", "<cmd>bfirst<CR>")
-vim.keymap.set("n", "[b", "<cmd>bNext<CR>")
-vim.keymap.set("n", "]b", "<cmd>bnext<CR>")
-vim.keymap.set("n", "]B", "<cmd>blast<CR>")
+vim.keymap.set("n", "[B", "<cmd>bfirst<CR>", { desc = "First buffer" })
+vim.keymap.set("n", "[b", "<cmd>bNext<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "]B", "<cmd>blast<CR>", { desc = "Last buffer" })
 
 -- Close buffers with <leader>bd
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>")
-vim.keymap.set("n", "<leader>bu", "<cmd>bu<CR>")
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Buffer delete" })
+vim.keymap.set("n", "<leader>bu", "<cmd>bu<CR>", { desc = "Buffer unload" })
 
 -- Toggle diagnostic text with <leader>ll
 vim.keymap.set("n", "<Leader>ll", function()
@@ -28,10 +28,10 @@ vim.keymap.set("n", "<Leader>ll", function()
         virtual_text = not vim.diagnostic.config().virtual_text,
     }
     print("virtual_text = " .. tostring(vim.diagnostic.config().virtual_text))
-end)
+end, { desc = "LSP toggle virtual text" })
 
 -- Toggle diagnostics altogether with <leader>lsp
 vim.keymap.set("n", "<Leader>lsp", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
     print("vim.diagnostic.is_enabled() = " .. tostring(vim.diagnostic.is_enabled()))
-end)
+end, { desc = "LSP toggle diagnostics" })

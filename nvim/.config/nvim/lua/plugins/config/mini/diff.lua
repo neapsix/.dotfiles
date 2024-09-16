@@ -20,4 +20,4 @@ diff.setup {
     },
 }
 
-vim.keymap.set("n", "<leader>gd", diff.toggle_overlay)
+vim.keymap.set("n", "<leader>gd", diff.toggle_overlay, { desc = "Git diff (mini.diff)" })

@@ -28,8 +28,8 @@ local function session_select_delete()
     MiniSessions.select "delete"
 end
 
-vim.keymap.set("n", "<leader>sa", session_new)
-vim.keymap.set("n", "<leader>sr", MiniSessions.read)
-vim.keymap.set("n", "<leader>ss", MiniSessions.select)
-vim.keymap.set("n", "<leader>sd", session_select_delete)
-vim.keymap.set("n", "<leader>sD", MiniSessions.delete)
+vim.keymap.set("n", "<leader>sa", session_new, { desc = "New session (mini.session)" })
+vim.keymap.set("n", "<leader>sr", MiniSessions.read, { desc = "Read session (mini.session)" })
+vim.keymap.set("n", "<leader>ss", MiniSessions.select, { desc = "Select session (mini.session)" })
+vim.keymap.set("n", "<leader>sd", session_select_delete, { desc = "Pick session to delete (mini.session)" })
+vim.keymap.set("n", "<leader>sD", MiniSessions.delete, { desc = "Delete current session (mini.session)" })

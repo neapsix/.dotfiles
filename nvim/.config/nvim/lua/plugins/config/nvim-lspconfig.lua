@@ -58,9 +58,9 @@ require("lspconfig").templ.setup {
 }
 
 -- Mappings - same as defaults from nvim-lspconfig docs
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP open float" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "LSP previous diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "LSP next diagnostic" })
 
 -- Additional setup and helper functions for certain servers
 local M = {}
