@@ -43,7 +43,7 @@ require("conform").setup {
     },
 }
 
--- Callback function to fun after formatting. For filetypes not listed above
+-- Callback function to run after formatting. For filetypes not listed above
 -- where we fall back to LSP formatting, use this function to run additional
 -- commands after LSP formatting.
 local function after_format()

@@ -54,6 +54,7 @@ paq:setup { verbose = false } {
     "rafamadriz/friendly-snippets",
 
     -- UI features
+    "linrongbin16/lsp-progress.nvim",
     -- Note: Tried mini.statusline but prefer lualine
     "nvim-lualine/lualine.nvim",
     -- "nvim-tree/nvim-tree.lua",
@@ -136,6 +137,8 @@ require "plugins.config.nvim-dap-ui"
 
 require("dap-go").setup {}
 
+require "plugins.config.lsp-progress"
+-- Load lualine after lsp-progress
 require "plugins.config.lualine"
 -- require "plugins.config.nvim-tree"
 vim.g.glow_no_install = true -- Config for patched glow.nvim

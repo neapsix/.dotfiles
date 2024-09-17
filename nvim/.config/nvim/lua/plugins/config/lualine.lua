@@ -22,4 +22,23 @@ require("lualine").setup {
             },
         },
     },
+    sections = {
+        lualine_x = {
+            -- Note: configured to show only name and spinner
+            function()
+                return require("lsp-progress").progress()
+            end,
+            'encoding',
+            'fileformat',
+            'filetype',
+        },
+    },
 }
+
+-- Listen for lsp-progress events and refresh lualine.
+vim.api.nvim_create_augroup("lualine_lsp_progress", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+    group = "lualine_lsp_progress",
+    pattern = "LspProgressStatusUpdated",
+    callback = require("lualine").refresh,
+})

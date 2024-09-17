@@ -7,6 +7,7 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
 
+-- Functions for combined completion/snippet expansion mappings
 local expand_or_complete = function(fallback)
     if cmp.visible() then
         if luasnip.expandable() then
@@ -27,7 +28,7 @@ local expand_or_complete_first = function(fallback)
             luasnip.expand()
         else
             cmp.confirm {
-                select = true, -- Complete first item.
+                select = true, -- Use first item if no selection.
             }
         end
     else
@@ -35,6 +36,9 @@ local expand_or_complete_first = function(fallback)
     end
 end
 
+-- Note: Tab and Shift-Tab to select in the menu are commented out
+-- because I found they interfere with typing. The built-in C-x C-o
+-- completion guarantees you can tab or return with the menu open.
 local next_or_jump = function(fallback)
     -- if cmp.visible() then
     --     cmp.select_next_item()
@@ -57,6 +61,7 @@ local prev_or_jump = function(fallback)
     end
 end
 
+-- Sections to plug into nvim-cmp config tables
 local config_snippet = {
     expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -101,6 +106,7 @@ local config_formatting = {
     end,
 }
 
+-- Setup functions for nvim-cmp with actual config tables
 cmp.setup {
     snippet = config_snippet,
     mapping = config_mapping,
