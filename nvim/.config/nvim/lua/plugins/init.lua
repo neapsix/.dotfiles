@@ -20,7 +20,7 @@ paq:setup { verbose = false } {
 
     -- Syntax features
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    "vrischmann/tree-sitter-templ",
+    "windwp/nvim-ts-autotag",
     "abecodes/tabout.nvim",
 
     -- LSP
@@ -64,30 +64,34 @@ paq:setup { verbose = false } {
 
     -- Color schemes
     -- "shaunsingh/nord.nvim";
-    -- "AlexvZyl/nordic.nvim",
-    -- "rose-pine/neovim",
+    "rose-pine/neovim",
     -- "catppuccin/nvim",
-    "folke/tokyonight.nvim",
+    -- "folke/tokyonight.nvim",
     -- "nyoom-engineering/oxocarbon.nvim",
 }
 
 -- The user has to run :PaqInstall or :PaqSync once to pull everything
 
--- require("rose-pine").setup {
---     dark_variant = "moon",
--- }
+require("rose-pine").setup {
+    highlight_groups = {
+        Comment = { fg = "muted" },
+    },
+}
 
 -- require("catppuccin").setup {
---     flavour = "mocha",
+--     flavour = "macchiato",
+-- }
+
+-- require("tokyonight").setup {
+--     style = "storm",
 -- }
 
 -- Select a color scheme
 -- Note: Do this before setting up plugins that need to be themed
 -- vim.cmd [[colorscheme nord]]
--- vim.cmd [[colorscheme nordic]]
--- vim.cmd [[colorscheme rose-pine]]
+vim.cmd [[colorscheme rose-pine]]
 -- vim.cmd [[colorscheme catppuccin]]
-vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme tokyonight]]
 -- vim.cmd [[colorscheme oxocarbon]]
 
 -- Run after-install setup for plugins that need it
@@ -113,6 +117,7 @@ require("mini.splitjoin").setup {}
 require("mini.surround").setup {}
 
 require "plugins.config.nvim-treesitter"
+require("nvim-ts-autotag").setup {}
 
 require("mason").setup {}
 require("mason-lspconfig").setup {}
