@@ -35,3 +35,64 @@ vim.keymap.set("n", "<Leader>lsp", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
     print("vim.diagnostic.is_enabled() = " .. tostring(vim.diagnostic.is_enabled()))
 end, { desc = "LSP toggle diagnostics" })
+
+-- Global LSP mappings
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP open float" })
+-- Set by default
+-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "LSP previous diagnostic" })
+-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "LSP next diagnostic" })
+
+-- Buffer-local mappings for built-in LSP support (set when a language server
+-- attaches to a buffer. This autocommand replaces on_attach functions set by
+-- lspconfig for each language server in older neovim versions.
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(ev)
+        -- Set by default
+        -- Enable completion triggered by <c-x><c-o>
+        -- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+        -- Set omnifunc for mini.completion (if activating on buffer attach)
+        -- vim.o.omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
+
+        -- Set buffer-local mappings for LSP functions.
+        -- stylua: ignore start
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
+            { buffer = ev.buf, desc = "Go to declaration (LSP)" })
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+            { buffer = ev.buf, desc = "Go to definition (LSP)" })
+        -- Set by default
+        -- vim.keymap.set("n", "K", vim.lsp.buf.hover,
+        --     { buffer = ev.buf, desc = "Hover (LSP)" })
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
+            { buffer = ev.buf, desc = "Go to implementation (LSP)" })
+        vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help,
+            { buffer = ev.buf, desc = "Signature help (LSP)" })
+        vim.keymap.set("n", "wa", vim.lsp.buf.add_workspace_folder,
+            { buffer = ev.buf, desc = "Add workspace folder (LSP)" })
+        vim.keymap.set("n", "wr", vim.lsp.buf.remove_workspace_folder,
+            { buffer = ev.buf, desc = "Remove workspace folder (LSP)" })
+        vim.keymap.set("n", "wl",
+            function()
+                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end,
+            { buffer = ev.buf, desc = "List workspace folders (LSP)" })
+        vim.keymap.set("n", "<Space>D", vim.lsp.buf.type_definition,
+            { buffer = ev.buf, desc = "Go to type definition (LSP)" })
+        vim.keymap.set("n", "<Space>rn", vim.lsp.buf.rename,
+            { buffer = ev.buf, desc = "Rename (LSP)" })
+        vim.keymap.set("n", "<Space>ca", vim.lsp.buf.code_action,
+            { buffer = ev.buf, desc = "Select code action here (LSP)" })
+        -- Replaced by trouble (LSP definitions/references list)
+        -- vim.keymap.set("n", "<Space>gr", vim.lsp.buf.references,
+        --     { buffer = ev.buf, desc = "References (LSP)" })
+        -- Note: formatting, including with the built-in LSP as below, is done
+        -- through the Conform plugin (see plugins/config/conform.lua).
+        vim.keymap.set("n", "<Space>f",
+            function()
+                vim.lsp.buf.format { async = true }
+            end,
+            { buffer = ev.buf, desc = "Format buffer (LSP)" })
+        -- stylua: ignore end
+    end,
+})

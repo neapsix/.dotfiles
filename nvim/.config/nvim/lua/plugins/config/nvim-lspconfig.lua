@@ -9,10 +9,12 @@ table.insert(runtime_path, "lua/?/init.lua")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- Get buffer-local mappings from handlers file
-local on_attach = require("plugins.config.handlers").on_attach
+-- Note: buffer-local mappings for LSP functions are set with an
+-- LspAttach autocmd defined in the core/mappings.lua file.
 
-require("lspconfig").awk_ls.setup {}
+require("lspconfig").ansiblels.setup { capabilities = capabilities }
+
+require("lspconfig").awk_ls.setup { capabilities = capabilities }
 
 require("lspconfig").lua_ls.setup {
     settings = {
@@ -34,33 +36,13 @@ require("lspconfig").lua_ls.setup {
         },
     },
     capabilities = capabilities,
-    on_attach = on_attach,
 }
 
-require("lspconfig").gopls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+require("lspconfig").gopls.setup { capabilities = capabilities }
 
-require("lspconfig").ansiblels.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+require("lspconfig").pyright.setup { capabilities = capabilities }
 
-require("lspconfig").pyright.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
-require("lspconfig").templ.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
--- Mappings - same as defaults from nvim-lspconfig docs
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "LSP open float" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "LSP previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "LSP next diagnostic" })
+require("lspconfig").templ.setup { capabilities = capabilities }
 
 -- Additional setup and helper functions for certain servers
 local M = {}
