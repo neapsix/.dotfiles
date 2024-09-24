@@ -56,7 +56,8 @@ paq:setup { verbose = false } {
     -- UI features
     "linrongbin16/lsp-progress.nvim",
     -- Note: Tried mini.statusline but prefer lualine
-    "nvim-lualine/lualine.nvim",
+    -- "nvim-lualine/lualine.nvim",
+    "rebelot/heirline.nvim",
     -- "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
@@ -115,7 +116,13 @@ require "plugins.config.mini.map"
 require "plugins.config.mini.pick"
 require "plugins.config.mini.sessions"
 require("mini.splitjoin").setup {}
+-- Note: mini.statusline takes a good bit less time to start (and run,
+-- presumably) than lualine. Likely because it draws from mini.git/diff.
+-- require "plugins.config.mini.statusline"
 require("mini.surround").setup {}
+-- Activate mini.git if using mini.statusline--main function is to
+-- expose buffer-local variables about git to use in statusline.
+require("mini.git").setup {}
 
 require "plugins.config.nvim-treesitter"
 require("nvim-ts-autotag").setup {}
@@ -139,7 +146,8 @@ require("dap-go").setup {}
 
 require "plugins.config.lsp-progress"
 -- Load lualine after lsp-progress
-require "plugins.config.lualine"
+-- require "plugins.config.lualine"
+require "plugins.config.heirline"
 -- require "plugins.config.nvim-tree"
 vim.g.glow_no_install = true -- Config for patched glow.nvim
 -- require "plugins.config.nvim-fzy"
