@@ -113,6 +113,7 @@ require "plugins.config.mini.files"
 require "plugins.config.mini.hipatterns"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
 require "plugins.config.mini.map"
+require("mini.operators").setup {}
 require "plugins.config.mini.pick"
 require "plugins.config.mini.sessions"
 require("mini.splitjoin").setup {}
@@ -120,6 +121,7 @@ require("mini.splitjoin").setup {}
 -- presumably) than lualine. Likely because it draws from mini.git/diff.
 -- require "plugins.config.mini.statusline"
 require("mini.surround").setup {}
+require("mini.trailspace").setup {}
 -- Activate mini.git if using mini.statusline--main function is to
 -- expose buffer-local variables about git to use in statusline.
 require("mini.git").setup {}
