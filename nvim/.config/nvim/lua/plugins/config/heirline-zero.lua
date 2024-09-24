@@ -2,91 +2,39 @@ local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
 local Space = { provider = " " }
+local Sep = { provider = "|" }
 
 local ViMode = {
     init = function(self)
-        -- Get full mode. mode() with no arg = first character of mode.
-        self.mode = vim.fn.mode(1)
+        self.mode = vim.fn.mode() -- :h mode()
     end,
-    -- Map the output of mode() to a display name string and highlight
-    -- group. Put in `static` to compute once at initialization time.
+
+    -- Note: using only first character of mode names in this theme.
     static = {
         mode_names = {
-            n = "N",
-            no = "N?",
-            nov = "N?",
-            noV = "N?",
-            ["no\22"] = "N?",
-            niI = "Ni",
-            niR = "Nr",
-            niV = "Nv",
-            nt = "Nt",
-            v = "V",
-            vs = "Vs",
-            V = "V_",
-            Vs = "Vs",
-            ["\22"] = "^V",
-            ["\22s"] = "^V",
-            s = "S",
-            S = "S_",
-            ["\19"] = "^S",
-            i = "I",
-            ic = "Ic",
-            ix = "Ix",
-            R = "R",
-            Rc = "Rc",
-            Rx = "Rx",
-            Rv = "Rv",
-            Rvc = "Rv",
-            Rvx = "Rv",
-            c = "C",
-            cv = "Ex",
+            n = "NORMAL",
+            v = "VISUAL",
+            V = "V-LINE",
+            ["\22"] = "V-BLOCK",
+            s = "SELECT",
+            S = "S-LINE",
+            ["\19"] = "S-BLOCK",
+            i = "INSERT",
+            R = "REPLACE",
+            c = "COMMAND",
             r = "...",
-            rm = "M",
             ["r?"] = "?",
             ["!"] = "!",
-            t = "T",
-        },
-        mode_hl = {
-            n = "MiniStatuslineModeNormal",
-            i = "MiniStatusLineModeInsert",
-            v = "MiniStatusLineModeVisual",
-            V = "MiniStatusLineModeVisual",
-            ["\22"] = "MiniStatusLineModeVisual",
-            c = "MiniStatuslineModeCommand",
-            s = "MiniStatusLineModeOther",
-            S = "MiniStatusLineModeOther",
-            ["\19"] = "MiniStatusLineModeOther",
-            R = "MiniStatuslineModeReplace",
-            r = "MiniStatuslineModeReplace",
-            ["!"] = "MiniStatuslineModeNormal",
-            t = "MiniStatuslineModeCommand",
+            t = "TERMINAL",
         },
     },
 
-    {
-        provider = "",
-        hl = function(self)
-            local mode = self.mode:sub(1, 1) -- First character of mode
-            return { fg = utils.get_highlight(self.mode_hl[mode]).bg }
-        end,
-    },
     -- Note: Access static fields as attributes after initialization.
     {
         provider = function(self)
             return " " .. self.mode_names[self.mode] .. " "
         end,
-        hl = function(self)
-            local mode = self.mode:sub(1, 1) -- First character of mode
-            return self.mode_hl[mode]
-        end,
-    },
-    {
-        provider = "",
-        hl = function(self)
-            local mode = self.mode:sub(1, 1) -- First character of mode
-            return { fg = utils.get_highlight(self.mode_hl[mode]).bg }
-        end,
+        hl = function(self) return self:mode_hl() end,
     },
 
     -- Re-evaluate component on ModeChanged event. Also re-evaluates the
@@ -107,25 +55,14 @@ local FileNameBlock = {
     end,
 }
 
--- Define children separately to add later.
-local FileIcon = {
-    init = function(self)
-        local filename = self.filename
-        self.icon, self.hl, self.is_default = MiniIcons.get("file", filename)
-    end,
-    provider = function(self)
-        return self.icon and (" " .. self.icon .. " ")
-    end,
-}
-
 local FileName = {
     provider = function(self)
         -- %f = file path relative to working directory or [No Name]
         local f = vim.api.nvim_eval_statusline("%f", {})
 
-        -- If the filename would occupy more than 1/4 of the width,
+        -- If the filename would occupy more than 1/5 of the width,
         -- trim the file path to initials.
-        if not conditions.width_percent_below(f.width, 0.25) then
+        if not conditions.width_percent_below(f.width, 0.20) then
             return vim.fn.pathshorten(f.str)
         else
             return f.str
@@ -138,70 +75,33 @@ local FileFlags = {
     -- %r = [RO] for read-only
     -- %h = [Help] in help files
     -- %w = [Preview] in preview window (when previewing a tag)
-
-    -- %#String# = gold
-    -- %#Special# = foam
-    -- %#NonText# = gray
-    -- %#Function# = rose
-    -- %#Macro# = iris
-
-    -- provider = " %#String#%m%#Special#%r%#Macro#%w"
-    Space,
-    {
-        provider = "%m",
-        hl = "String",
-    },
-    {
-        provider = "%r",
-        hl = "Special",
-    },
-    {
-        provider = "%w",
-        hl = "Macro",
-    },
-}
-
--- Change filename color if the buffer is modified. Use this "modifier"
--- component to alter the existing filename component.
-local FileNameModifer = {
-    hl = function()
-        if vim.bo.modified then
-            return "Title"
-        end
-    end,
+    provider = " %m%r%w",
 }
 
 -- Add children to the FileNameBlock component
 FileNameBlock = utils.insert(FileNameBlock,
-    FileIcon,
-    -- Make FileName a child of FileNameModifier.
-    utils.insert(FileNameModifer, FileName),
+    Space,
+    FileName,
     FileFlags,
     -- Cut here when there's not enough space.
     { provider = '%<' }
 )
 
 local DevInfoBlock = {
-    hl = "MiniStatuslineDevinfo",
+    hl = function(self) return self:mode_hl_inverted_overlay() end
 }
 
 local MiniGitSummary = {
-    -- Don't use a condition--causes some issues with the section
-    -- appearing and makes heirline check the condition more often.
     {
         init = function(self)
             self.minigit_summary_string = vim.b.minigit_summary_string
         end,
 
         provider = function(self)
-            -- Check for nil here instead of using a condition
             return self.minigit_summary_string ~= nil and
-                "  " .. self.minigit_summary_string .. " "
+                " " .. self.minigit_summary_string .. " "
         end,
-        update = {
-            "User",
-            pattern = { "MiniGitUpdated" },
-        },
+        -- Use default update interval because this text is mode-colored
     },
 }
 
@@ -209,6 +109,7 @@ local MiniDiffSummary = {
     condition = function()
         -- TODO: This doesn't seem to reliably stop from running on untracked files.
         return vim.b.minidiff_summary_string ~= nil
+            and vim.b.minidiff_summary_string ~= ""
             -- Also don't show if a reasonable-length summary (12 chars) would
             -- be 25% or more of the window's width
             and conditions.width_percent_below(12, 0.25)
@@ -217,39 +118,47 @@ local MiniDiffSummary = {
     init = function(self)
         self.minidiff_summary = vim.b.minidiff_summary
     end,
+
+    -- This uses the default update interval because it's mode-colored.
     {
-        provider = function(self)
-            if self.minidiff_summary.add == nil then return "" end
-            if self.minidiff_summary.add > 0 then
-                return "+" .. self.minidiff_summary.add .. " "
-            end
-            return ""
-        end,
-        hl = "MiniDiffSignAdd",
+        provider = "| "
     },
+    -- These are within a block to use a different update event.
     {
-        provider = function(self)
-            if self.minidiff_summary.delete == nil then return "" end
-            if self.minidiff_summary.delete > 0 then
-                return "-" .. self.minidiff_summary.delete .. " "
-            end
-            return ""
-        end,
-        hl = "MiniDiffSignDelete",
-    },
-    {
-        provider = function(self)
-            if self.minidiff_summary.change == nil then return "" end
-            if self.minidiff_summary.change > 0 then
-                return "~" .. self.minidiff_summary.change .. " "
-            end
-            return ""
-        end,
-        hl = "MiniDiffSignChange",
-    },
-    update = {
-        "User",
-        pattern = { "MiniDiffUpdated" },
+        {
+            provider = function(self)
+                if self.minidiff_summary.add == nil then return "" end
+                if self.minidiff_summary.add > 0 then
+                    return "+" .. self.minidiff_summary.add .. " "
+                end
+                return ""
+            end,
+            hl = "MiniDiffSignAdd",
+        },
+        {
+            provider = function(self)
+                if self.minidiff_summary.delete == nil then return "" end
+                if self.minidiff_summary.delete > 0 then
+                    return "-" .. self.minidiff_summary.delete .. " "
+                end
+                return ""
+            end,
+            hl = "MiniDiffSignDelete",
+        },
+        {
+            provider = function(self)
+                if self.minidiff_summary.change == nil then return "" end
+                if self.minidiff_summary.change > 0 then
+                    return "~" .. self.minidiff_summary.change .. " "
+                end
+                return ""
+            end,
+            hl = "MiniDiffSignChange",
+        },
+        update = {
+            "User",
+            pattern = { "MiniDiffUpdated" },
+        },
     },
 }
 
@@ -283,10 +192,6 @@ local Diagnostics = {
     condition = conditions.has_diagnostics,
 
     static = {
-        -- error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-        -- warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-        -- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-        -- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
         error_icon = "E",
         warn_icon = "W",
         info_icon = "I",
@@ -355,39 +260,39 @@ LSPInfoBlock = utils.insert(LSPInfoBlock,
     LSPActive
 )
 
-local DAPMessages = {
-    condition = function()
-        local session = require("dap").session()
-        return session ~= nil
-    end,
-    provider = function()
-        return "  " .. require("dap").status()
-    end,
-    hl = "Debug"
-}
-
-local FileInfoBlock = {
-    hl = "MiniStatuslineFileinfo",
-}
-
-local FileType = {
-    provider = function()
-        return string.upper(vim.bo.filetype)
-    end,
-}
+local FileInfoBlock = {}
 
 local FileEncoding = {
     provider = function()
         local enc = (vim.bo.fenc ~= '' and vim.bo.fenc) or vim.o.enc
-        return enc ~= 'utf-8' and (enc:upper() .. " ")
+        return enc ~= "utf-8" and (enc .. " | ")
     end
 }
 
 local FileFormat = {
     provider = function()
         local fmt = vim.bo.fileformat
-        return fmt ~= 'unix' and (fmt:upper() .. " ")
+        return fmt ~= "unix" and (fmt .. " | ")
     end
+}
+
+local FileType = {
+    provider = function()
+        if vim.bo.filetype ~= "" then
+            return vim.bo.filetype .. " "
+        end
+    end,
+}
+
+FileInfoBlock = utils.insert(FileInfoBlock,
+    FileEncoding,
+    FileFormat,
+    FileType
+)
+
+local Percent = {
+    provider = " %3(%P%) ",
+    hl = function(self) return self:mode_hl_inverted_overlay() end,
 }
 
 local Ruler = {
@@ -395,27 +300,18 @@ local Ruler = {
     -- %L = number of lines in the buffer
     -- %c = column number
     -- %P = percentage through file of displayed window
-    provider = "%P %7(%l/%3L%):%2c",
+    -- provider = " %7(%l/%3L%):%2c ",
+    provider = " %l:%c ",
+    hl = function(self) return self:mode_hl() end,
 }
-
-FileInfoBlock = utils.insert(FileInfoBlock,
-    Space,
-    FileType,
-    Space,
-    FileEncoding,
-    FileFormat,
-    Ruler,
-    Space
-)
 
 local TerminalName = {
     -- We could add a condition to check that buftype == 'terminal'
     -- or we could do that later.
     provider = function()
         local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
-        return "  " .. tname
+        return tname
     end,
-    hl = "Function",
 }
 
 local HelpFileName = {
@@ -423,27 +319,7 @@ local HelpFileName = {
     -- Note: no need to check that the filetype is help, because we only
     -- use this component in the Help statusline.
     provider = "%t",
-    hl = function(self)
-        if conditions.is_active() then
-            return "Function"
-        end
-    end,
 }
-
--- local Snippets = {
---     -- check that we are in insert or select mode
---     condition = function()
---         return vim.tbl_contains({'s', 'i'}, vim.fn.mode())
---     end,
---     provider = function()
---         local luasnip = require "luasnip"
---         -- Note: forward box appears even if you're on the last item. :(
---         local forward =  luasnip.locally_jumpable(1) and "" or ""
---         local backward = luasnip.locally_jumpable(-1) and " " or ""
---         return backward .. forward
---     end,
---     hl = "DiagnosticError",
--- }
 
 local Align = { provider = "%=" }
 
@@ -451,17 +327,16 @@ local DefaultStatusline = {
     DevInfoBlock,
     FileNameBlock,
     Align,
-    DAPMessages,
-    Align,
     LSPInfoBlock,
     Space,
     FileInfoBlock,
+    Percent,
+    Ruler
 }
 
 local InactiveStatusline = {
     condition = conditions.is_not_active,
     FileType,
-    Space,
     FileName,
     Align,
 }
@@ -474,7 +349,6 @@ local SpecialStatusline = {
         })
     end,
     FileType,
-    Space,
     HelpFileName,
     Align
 }
@@ -487,17 +361,50 @@ local TerminalStatusline = {
     -- Add a condition to ViMode to show it only when buffer is active.
     { condition = conditions.is_active, ViMode, Space },
     FileType,
-    Space,
     TerminalName,
     Align,
 }
 
 local StatusLines = {
+    static = {
+        mode_hl_map = {
+            n = "MiniStatuslineModeNormal",
+            i = "MiniStatusLineModeInsert",
+            v = "MiniStatusLineModeVisual",
+            V = "MiniStatusLineModeVisual",
+            ["\22"] = "MiniStatusLineModeVisual",
+            c = "MiniStatuslineModeCommand",
+            s = "MiniStatusLineModeOther",
+            S = "MiniStatusLineModeOther",
+            ["\19"] = "MiniStatusLineModeOther",
+            R = "MiniStatuslineModeReplace",
+            r = "MiniStatuslineModeReplace",
+            ["!"] = "MiniStatuslineModeNormal",
+        },
+
+        mode_hl = function(self)
+            local mode = conditions.is_active() and vim.fn.mode() or "n"
+            return self.mode_hl_map[mode]
+        end,
+
+        mode_hl_inverted = function(self)
+            local h = utils.get_highlight(self:mode_hl())
+            return { fg = h.bg, bg = h.fg }
+        end,
+
+        mode_hl_inverted_overlay = function(self)
+            local mode_colors = utils.get_highlight(self:mode_hl())
+            local block_colors = utils.get_highlight("MiniStatusLineDevinfo")
+            return { fg = mode_colors.bg, bg = block_colors.bg }
+        end,
+
+    },
+
     hl = function()
         if conditions.is_active() then
-            return "MiniStatuslineFilename"
+            return "Normal"
         else
-            return "MiniStatuslineInactive"
+            return "NonText"
         end
     end,
 
