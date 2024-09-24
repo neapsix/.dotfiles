@@ -110,6 +110,9 @@ require "plugins.config.mini.clue"
 -- require "plugins.config.mini.completion"
 require "plugins.config.mini.diff"
 require "plugins.config.mini.files"
+-- Activate mini.git if using mini.statusline or heirline--exposes
+-- buffer-local variables about git to use in a statusline.
+require("mini.git").setup {}
 require "plugins.config.mini.hipatterns"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
 require "plugins.config.mini.map"
@@ -122,9 +125,6 @@ require("mini.splitjoin").setup {}
 -- require "plugins.config.mini.statusline"
 require("mini.surround").setup {}
 require("mini.trailspace").setup {}
--- Activate mini.git if using mini.statusline--main function is to
--- expose buffer-local variables about git to use in statusline.
-require("mini.git").setup {}
 
 require "plugins.config.nvim-treesitter"
 require("nvim-ts-autotag").setup {}
