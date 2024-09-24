@@ -11,11 +11,16 @@ return {
     -- enable_scroll_bar = true,
     -- line_height = 1.1,
     -- dpi = 144,
-    -- font = require("wezterm").font("Victor Mono", {weight="Medium"}),
-    -- font = require("wezterm").font("Fira Code"),
-    -- font = require("wezterm").font("Monaspace Neon"),
-    font = require("wezterm").font("IBM Plex Mono"),
-    font_size = 14.5,
+    -- font = require("wezterm").font("IBM Plex Mono"),
+    -- font = require("wezterm").font("Iosevka Fixed"),
+    font = wezterm.font_with_fallback {
+        {
+            family = "IosevkaTerm Nerd Font",
+            harfbuzz_features = { "calt=0" },
+        },
+    },
+    -- font_size = 14.5, -- for IBM Plex Mono
+    font_size = 16, -- for IosevkaTerm Nerd Font
     -- freetype_load_target = "Light",
     -- color_scheme = 'rose-pine',
     window_padding = {
