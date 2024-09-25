@@ -207,49 +207,40 @@ local MiniGitSummary = {
 
 local MiniDiffSummary = {
     condition = function()
-        -- TODO: This doesn't seem to reliably stop from running on untracked files.
-        return vim.b.minidiff_summary_string ~= nil
+        return vim.b.minidiff_summary ~= nil
             -- Also don't show if a reasonable-length summary (12 chars) would
             -- be 25% or more of the window's width
             and conditions.width_percent_below(12, 0.25)
     end,
-
     init = function(self)
         self.minidiff_summary = vim.b.minidiff_summary
     end,
     {
         provider = function(self)
-            if self.minidiff_summary.add == nil then return "" end
+            if self.minidiff_summary.add == nil then return end
             if self.minidiff_summary.add > 0 then
                 return "+" .. self.minidiff_summary.add .. " "
             end
-            return ""
         end,
         hl = "MiniDiffSignAdd",
     },
     {
         provider = function(self)
-            if self.minidiff_summary.delete == nil then return "" end
+            if self.minidiff_summary.delete == nil then return end
             if self.minidiff_summary.delete > 0 then
                 return "-" .. self.minidiff_summary.delete .. " "
             end
-            return ""
         end,
         hl = "MiniDiffSignDelete",
     },
     {
         provider = function(self)
-            if self.minidiff_summary.change == nil then return "" end
+            if self.minidiff_summary.change == nil then return end
             if self.minidiff_summary.change > 0 then
                 return "~" .. self.minidiff_summary.change .. " "
             end
-            return ""
         end,
         hl = "MiniDiffSignChange",
-    },
-    update = {
-        "User",
-        pattern = { "MiniDiffUpdated" },
     },
 }
 
