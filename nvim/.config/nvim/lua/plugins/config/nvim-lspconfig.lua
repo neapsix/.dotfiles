@@ -33,6 +33,9 @@ require("lspconfig").lua_ls.setup {
             telemetry = {
                 enable = false,
             },
+            format = {
+                enable = false,
+            }
         },
     },
     capabilities = capabilities,

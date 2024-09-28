@@ -88,11 +88,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --     { buffer = ev.buf, desc = "References (LSP)" })
         -- Note: formatting, including with the built-in LSP as below, is done
         -- through the Conform plugin (see plugins/config/conform.lua).
-        vim.keymap.set("n", "<Space>f",
-            function()
-                vim.lsp.buf.format { async = true }
-            end,
-            { buffer = ev.buf, desc = "Format buffer (LSP)" })
+        -- vim.keymap.set("n", "<Space>f",
+        --     function()
+        --         vim.lsp.buf.format { async = true }
+        --     end,
+        --     { buffer = ev.buf, desc = "Format buffer (LSP)" })
         -- stylua: ignore end
     end,
 })
