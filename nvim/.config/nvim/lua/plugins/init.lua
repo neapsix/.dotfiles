@@ -57,7 +57,7 @@ paq:setup { verbose = false } {
     "linrongbin16/lsp-progress.nvim",
     -- Note: Tried mini.statusline but prefer lualine
     -- "nvim-lualine/lualine.nvim",
-    "rebelot/heirline.nvim",
+    -- "rebelot/heirline.nvim",
     -- "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
@@ -149,7 +149,9 @@ require("dap-go").setup {}
 require "plugins.config.lsp-progress"
 -- Load lualine after lsp-progress
 -- require "plugins.config.lualine"
-require "plugins.config.heirline"
+-- require "plugins.config.heirline"
+-- Load after lsp-progress, mini.git, and mini.diff.
+require "plugins.config.statusline".setup {}
 -- require "plugins.config.nvim-tree"
 vim.g.glow_no_install = true -- Config for patched glow.nvim
 -- require "plugins.config.nvim-fzy"
