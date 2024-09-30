@@ -58,11 +58,8 @@ paq:setup { verbose = false } {
     -- Note: Tried mini.statusline but prefer lualine
     -- "nvim-lualine/lualine.nvim",
     -- "rebelot/heirline.nvim",
-    -- "nvim-tree/nvim-tree.lua",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
-    -- "mfussenegger/nvim-fzy",
-    -- "mfussenegger/nvim-qwahl",
 
     -- Color schemes
     -- "shaunsingh/nord.nvim";
@@ -103,6 +100,7 @@ require("nvim-autopairs").setup {}
 -- Make sure nothing remaps <CR> after this.
 require("Comment").setup {}
 require("mini.ai").setup {}
+require("mini.align").setup {}
 -- require("mini.bracketed").setup {} -- Replaces next/prev buffer with [b ]b
 require "plugins.config.mini.bufremove"
 require "plugins.config.mini.clue"
@@ -152,7 +150,4 @@ require "plugins.config.lsp-progress"
 -- require "plugins.config.heirline"
 -- Load after lsp-progress, mini.git, and mini.diff.
 require "plugins.config.statusline".setup {}
--- require "plugins.config.nvim-tree"
 vim.g.glow_no_install = true -- Config for patched glow.nvim
--- require "plugins.config.nvim-fzy"
--- require "plugins.config.nvim-qwahl"
