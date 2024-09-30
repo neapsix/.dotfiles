@@ -11,7 +11,7 @@ paq:setup { verbose = false } {
 
     -- Basic editor features
     -- Note: Prefer this plugin to mini.pairs for integration with cmp
-    "windwp/nvim-autopairs",
+    -- "windwp/nvim-autopairs",
     -- Note: Prefer this plugin to built-in commenting and mini.comment
     -- for block comments and horizontal motions, e.g. gc$.
     "numToStr/Comment.nvim",
@@ -40,18 +40,18 @@ paq:setup { verbose = false } {
     "leoluz/nvim-dap-go",
 
     -- Completion
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-calc",
-    "hrsh7th/nvim-cmp",
+    -- "hrsh7th/cmp-nvim-lsp",
+    -- "hrsh7th/cmp-nvim-lsp-signature-help",
+    -- "hrsh7th/cmp-buffer",
+    -- "hrsh7th/cmp-path",
+    -- "hrsh7th/cmp-cmdline",
+    -- "hrsh7th/cmp-calc",
+    -- "hrsh7th/nvim-cmp",
 
     -- Snippets
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
+    -- "L3MON4D3/LuaSnip",
+    -- "saadparwaiz1/cmp_luasnip",
+    -- "rafamadriz/friendly-snippets",
 
     -- UI features
     "linrongbin16/lsp-progress.nvim",
@@ -94,10 +94,10 @@ vim.cmd [[colorscheme rose-pine]]
 -- vim.cmd [[colorscheme oxocarbon]]
 
 -- Run after-install setup for plugins that need it
-require("nvim-autopairs").setup {}
--- Make sure nothing remaps <CR> after this.
--- require("mini.pairs").setup {}
--- Make sure nothing remaps <CR> after this.
+-- Load autopairs before nvim-cmp
+-- require("nvim-autopairs").setup {}
+-- Load mini.pairs before mini.completion
+require("mini.pairs").setup {}
 require("Comment").setup {}
 require("mini.ai").setup {}
 require("mini.align").setup {}
@@ -105,7 +105,7 @@ require("mini.align").setup {}
 require "plugins.config.mini.bufremove"
 require "plugins.config.mini.clue"
 -- Load mini.completion after mini.pairs
--- require "plugins.config.mini.completion"
+require "plugins.config.mini.completion"
 require "plugins.config.mini.diff"
 require "plugins.config.mini.files"
 -- Activate mini.git if using mini.statusline or heirline--exposes
@@ -132,10 +132,10 @@ require("mason-lspconfig").setup {}
 require "plugins.config.nvim-lint"
 require "plugins.config.conform"
 require "plugins.config.nvim-lspconfig"
-require "plugins.config.luasnip"
+-- require "plugins.config.luasnip"
 require "plugins.config.trouble"
 
-require "plugins.config.nvim-cmp"
+-- require "plugins.config.nvim-cmp"
 -- If a completion plugin uses the tab key, load tabout after.
 require("tabout").setup {}
 

@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
         -- Set omnifunc for mini.completion (if activating on buffer attach)
-        -- vim.o.omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
+        vim.o.omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
 
         -- Set buffer-local mappings for LSP functions.
         -- stylua: ignore start
