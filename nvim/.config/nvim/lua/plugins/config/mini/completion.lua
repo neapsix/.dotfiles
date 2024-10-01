@@ -14,6 +14,10 @@ require("mini.completion").setup {
     auto_setup = false,
 }
 
+-- List filetypes to disable auto-completion menu.
+local f = function(args) vim.b[args.buf].minicompletion_disable = true end
+vim.api.nvim_create_autocmd("Filetype", { pattern = "minifiles", callback = f })
+
 -- To use `<Tab>` and `<S-Tab>` for navigation through completion list
 -- local imap_expr = function(lhs, rhs)
 --     vim.keymap.set("i", lhs, rhs, { expr = true })
