@@ -97,7 +97,7 @@ vim.cmd [[colorscheme rose-pine]]
 -- Load autopairs before nvim-cmp
 -- require("nvim-autopairs").setup {}
 -- Load mini.pairs before mini.completion
-require("mini.pairs").setup {}
+require "plugins.config.mini.pairs"
 require("Comment").setup {}
 require("mini.ai").setup {}
 require("mini.align").setup {}
