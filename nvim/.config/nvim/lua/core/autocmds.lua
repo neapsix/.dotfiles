@@ -36,6 +36,46 @@ api.nvim_create_autocmd("FileType", {
     -- end
 })
 
+-- Markdown: In bullet and numbered lists, use Tab and Shift-Tab to indent.
+local keycode = vim.keycode
+    or function(x) return vim.api.nvim_replace_termcodes(x, true, true, true) end
+
+local list_patterns = {
+    "^%s*[%-%*%+]", -- bullet list (e.g. `- `, `* `, or `+ `)
+    "^%s*%d+%.", -- numbered list (e.g. `1. `)
+}
+
+local map_tab = function()
+    local rhs = function()
+        -- If the text before the cursor is the start of a line, some spaces,
+        -- a bullet or number, then anything, indent. Otherwise, type a tab.
+        local line = vim.api.nvim_get_current_line()
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        local before = line:sub(1, cursor[2])
+        for _, v in pairs(list_patterns) do
+            if before:match(v) then return keycode "<C-t>" end
+        end
+        return keycode "<Tab>"
+    end
+
+    vim.keymap.set("i", "<Tab>", rhs, { expr = true })
+end
+
+local map_shift_tab = function()
+    local rhs = function()
+        -- If the text before the cursor is the start of a line, some spaces,
+        -- a bullet or number, then anything, un-indent.
+        local line = vim.api.nvim_get_current_line()
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        local before = line:sub(1, cursor[2])
+        for _, v in pairs(list_patterns) do
+            if before:match(v) then return keycode "<C-d>" end
+        end
+    end
+
+    vim.keymap.set("i", "<S-Tab>", rhs, { expr = true })
+end
+
 -- Markdown: Repeat bullets, numbered lists, and table leaders on the next line.
 api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
@@ -59,6 +99,10 @@ api.nvim_create_autocmd("FileType", {
             "comments",
             "b:- [ ],b:- [x],b:-,b:*,b:+,b:>,b:|,b:1."
         )
+
+        -- Indent bullets/numbered lists with Tab and Shift-Tab.
+        map_tab()
+        map_shift_tab()
     end,
 })
 
