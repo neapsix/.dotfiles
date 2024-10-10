@@ -4,7 +4,8 @@
 local pick = require "mini.pick"
 
 pick.setup {}
-vim.ui.select = MiniPick.ui_select
+-- Currently not replacing vim.ui.select because some things use it awkwardly.
+-- vim.ui.select = MiniPick.ui_select
 
 -- Modify built-in buffers picker with mapping to delete buffers.
 pick.registry.buffers = function(local_opts)

@@ -1,5 +1,5 @@
 --
--- bootstrap.lua - Bootstrap Paq if not installed
+-- bootstrap_paq.lua - Get Paq package manager if not installed.
 --
 
 local function clone_paq()

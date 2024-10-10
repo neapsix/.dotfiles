@@ -105,8 +105,7 @@ require "plugins.config.mini.clue"
 require "plugins.config.mini.completion"
 require "plugins.config.mini.diff"
 require "plugins.config.mini.files"
--- Activate mini.git if using mini.statusline or heirline--exposes
--- buffer-local variables about git to use in a statusline.
+-- Load mini.git before custom statusline or mini.statusline.
 require("mini.git").setup {}
 require "plugins.config.mini.hipatterns"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
@@ -115,7 +114,7 @@ require("mini.operators").setup {}
 require "plugins.config.mini.pick"
 require "plugins.config.mini.sessions"
 require("mini.splitjoin").setup {}
--- Note: mini.statusline loads faster than lualine but not as fast as custom.
+-- Load mini.statusline after mini.git and mini.diff.
 -- require "plugins.config.mini.statusline"
 require("mini.surround").setup {}
 require("mini.trailspace").setup {}
@@ -141,6 +140,6 @@ require "plugins.config.nvim-dap-ui"
 require("dap-go").setup {}
 
 require "plugins.config.lsp-progress"
--- Load after lsp-progress, mini.git, and mini.diff.
+-- Load statusline after lsp-progress, mini.git, and mini.diff.
 require("plugins.config.statusline").setup {}
 vim.g.glow_no_install = true -- Config for patched glow.nvim

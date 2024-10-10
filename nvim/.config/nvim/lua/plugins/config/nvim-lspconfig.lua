@@ -57,7 +57,7 @@ require("lspconfig").templ.setup { capabilities = capabilities }
 local M = {}
 
 -- gopls: Return a function that applies "organize imports" edits from gopls.
--- Used in the config for guard.nvim to fix imports when we run the formatter.
+-- Used in the config for conform.nvim to fix imports when we run the formatter.
 --
 -- This code comes from the autocmd setup example in the gopls docs here:
 -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#vim--neovim

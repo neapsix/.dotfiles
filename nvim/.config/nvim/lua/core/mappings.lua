@@ -52,6 +52,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Enable completion triggered by <c-x><c-o>
         -- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
+        -- TODO: Try in neovim 0.11: Enable built-in auto-completion (LSP only)
+        -- vim.lsp.completion.enable(true, ev.data.client_id, ev.buf { autotrigger = true })
+
         -- Set omnifunc for mini.completion (if activating on buffer attach)
         vim.o.omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
 
