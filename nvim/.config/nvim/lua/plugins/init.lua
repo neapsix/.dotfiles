@@ -55,9 +55,6 @@ paq:setup { verbose = false } {
 
     -- UI features
     "linrongbin16/lsp-progress.nvim",
-    -- Note: Tried mini.statusline but prefer lualine
-    -- "nvim-lualine/lualine.nvim",
-    -- "rebelot/heirline.nvim",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
 
@@ -118,8 +115,7 @@ require("mini.operators").setup {}
 require "plugins.config.mini.pick"
 require "plugins.config.mini.sessions"
 require("mini.splitjoin").setup {}
--- Note: mini.statusline takes a good bit less time to start (and run,
--- presumably) than lualine. Likely because it draws from mini.git/diff.
+-- Note: mini.statusline loads faster than lualine but not as fast as custom.
 -- require "plugins.config.mini.statusline"
 require("mini.surround").setup {}
 require("mini.trailspace").setup {}
@@ -145,9 +141,6 @@ require "plugins.config.nvim-dap-ui"
 require("dap-go").setup {}
 
 require "plugins.config.lsp-progress"
--- Load lualine after lsp-progress
--- require "plugins.config.lualine"
--- require "plugins.config.heirline"
 -- Load after lsp-progress, mini.git, and mini.diff.
-require "plugins.config.statusline".setup {}
+require("plugins.config.statusline").setup {}
 vim.g.glow_no_install = true -- Config for patched glow.nvim
