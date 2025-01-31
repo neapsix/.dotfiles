@@ -1,5 +1,5 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 unsetopt beep
@@ -57,7 +57,7 @@ else
     export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 fi
 
-# Color code zsh completion, too. Use LS_COLORS because zsh needs GNU format. 
+# Color code zsh completion, too. Use LS_COLORS because zsh needs GNU format.
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Set the path and completions for interactive shells.
@@ -74,7 +74,7 @@ fi
 # Use python from brew if present
 type brew &>/dev/null && path=(${HOMEBREW_PREFIX}/opt/python/libexec/bin $path)
 
-# If asdf is installed, use it. 
+# If asdf is installed, use it.
 test -r "${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh" && . "${HOMEBREW_PREFIX}/opt/asdf/libexec/asdf.sh"
 test -r "$HOME/.asdf/asdf.sh" && . "$HOME/.asdf/asdf.sh"
 test -r "$HOME/.asdf/plugins/java/set-java-home.zsh" && . "$HOME/.asdf/plugins/java/set-java-home.zsh"
