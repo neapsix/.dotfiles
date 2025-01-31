@@ -9,14 +9,22 @@ pairs.setup {}
 local open = pairs.open
 pairs.open = function(pair, neigh_pattern)
     local o, c = pair:sub(1, 1), pair:sub(2, 2)
-    -- In markdown files, if you type three backticks (```), add a new line then
-    -- the matching pair. Without this, ``` makes ```` (two pairs of singles).
     local line = vim.api.nvim_get_current_line()
     local cursor = vim.api.nvim_win_get_cursor(0)
     local before = line:sub(1, cursor[2])
+
+    -- In markdown files, if you type three backticks (```), add a new line then
+    -- the matching pair. Without this, ``` makes ```` (two pairs of singles).
     if o == "`" and vim.bo.filetype == "markdown" and before:match "^%s*``" then
         return "`\n```"
             .. vim.api.nvim_replace_termcodes("<up>", true, true, true)
+    end
+
+    -- In python files, if you type three quotation marks ("""), add the matching
+    -- pair. Without this, """ makes """" (two pairs of quotes).
+    if o == '"' and vim.bo.filetype == "python" and before:match '^%s*""' then
+        return '""""'
+            .. vim.api.nvim_replace_termcodes("<left><left><left>", true, true, true)
     end
 
     -- Skip auto-pair when the next character is one of these. For example, if
