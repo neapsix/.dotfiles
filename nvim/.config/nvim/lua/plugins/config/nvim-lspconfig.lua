@@ -51,7 +51,11 @@ require("lspconfig").gopls.setup { capabilities = capabilities }
 
 require("lspconfig").pyright.setup { capabilities = capabilities }
 
+require("lspconfig").svelte.setup { capabilities = capabilities }
+
 require("lspconfig").templ.setup { capabilities = capabilities }
+
+require("lspconfig").ts_ls.setup { capabilities = capabilities }
 
 -- Additional setup and helper functions for certain servers
 local M = {}

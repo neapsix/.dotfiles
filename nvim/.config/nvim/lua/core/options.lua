@@ -27,10 +27,9 @@ opt.showmode = false		    -- Hide the mode when using a status plugin
 opt.tabstop = 8                     -- If a tab appears, show it as width 8
 opt.softtabstop = 4                 -- In files with tabs, use 4-space indents
 opt.shiftwidth = 4                  -- Use 4-space indents
-opt.shiftwidth = 4                  -- Use 4-space indents
 opt.expandtab = true                -- Write spaces instead of tabs
-opt.smartindent = false             -- Indent the next line to the same level
-opt.autoindent = false              -- Copy indent from current line to next
+opt.autoindent = true               -- Copy indent from current line to next
+opt.smartindent = true              -- Indent the next line to the same level
 
 -- Performance
 opt.swapfile = false                -- Don't use a swap file.

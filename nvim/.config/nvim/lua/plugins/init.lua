@@ -109,6 +109,10 @@ require "plugins.config.mini.files"
 require("mini.git").setup {}
 require "plugins.config.mini.hipatterns"
 require("mini.icons").setup {} -- Works as drop-in for nvim-web-devicons
+-- Set up mini.indentscope to get the text objects, but disable visuals.
+-- Note: snacks.nvim splits out text objects in scope module
+vim.g.miniindentscope_disable = true
+require("mini.indentscope").setup {}
 require "plugins.config.mini.map"
 require("mini.operators").setup {}
 require "plugins.config.mini.pick"
