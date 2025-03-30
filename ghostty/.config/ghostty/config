@@ -1,0 +1,7 @@
+font-family = "Iosevka Fixed"
+font-size = 14
+theme = rose-pine
+macos-icon = custom-style
+macos-icon-ghost-color = eb6f92
+macos-icon-screen-color = 191724,232136
+keybind = super+enter=unbind
