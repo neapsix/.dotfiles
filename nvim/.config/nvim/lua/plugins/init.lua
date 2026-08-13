@@ -37,8 +37,7 @@ vim.pack.add {
     gh "nvim-mini/mini.nvim",
 
     -- Syntax features
-    -- NOTE: Frozen version of nvim-treesitter (master branch)
-    { src = gh "nvim-treesitter/nvim-treesitter", version = "master" },
+    gh "nvim-treesitter/nvim-treesitter",
     gh "windwp/nvim-ts-autotag",
     gh "abecodes/tabout.nvim",
 
