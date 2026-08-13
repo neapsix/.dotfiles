@@ -2,7 +2,11 @@
 -- plugins/config/nvim-treesitter.lua - config for nvim-treesitter plugin
 --
 
--- NOTE: treesitter-cli must be installed too.
+if vim.fn.executable "tree-sitter" == 0 then
+    vim.print "Aborting nvim-treesitter plugin setup because tree-sitter-cli is not installed."
+    return
+end
+
 local ts = require "nvim-treesitter"
 
 local ensure_installed = {

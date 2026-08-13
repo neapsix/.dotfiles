@@ -30,6 +30,10 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 local gh = function(x) return "https://github.com/" .. x end
 vim.pack.add {
+    -- Package manager
+    gh "williamboman/mason.nvim",
+    gh "WhoIsSethDaniel/mason-tool-installer.nvim",
+
     -- Basic editor features
     -- NOTE: Prefer Comment.nvim to built-in commenting and mini.comment
     -- for block comments and horizontal motions, e.g. gc$.
@@ -42,7 +46,6 @@ vim.pack.add {
     gh "abecodes/tabout.nvim",
 
     -- LSP, linting, and formatting
-    gh "williamboman/mason.nvim",
     gh "neovim/nvim-lspconfig",
     gh "mfussenegger/nvim-lint",
     gh "stevearc/conform.nvim",
@@ -95,6 +98,9 @@ vim.cmd [[colorscheme rose-pine]]
 -- vim.cmd [[colorscheme oxocarbon]]
 
 -- Run after-install setup for plugins that need it
+require("mason").setup {}
+require "plugins.config.mason-tool-installer"
+
 -- Load mini.pairs before mini.completion
 require "plugins.config.mini.pairs"
 require("Comment").setup {}
@@ -128,7 +134,6 @@ require("mini.trailspace").setup {}
 require "plugins.config.nvim-treesitter"
 require("nvim-ts-autotag").setup {}
 
-require("mason").setup {}
 require "plugins.config.nvim-lint"
 require "plugins.config.conform"
 require "plugins.config.nvim-lspconfig"
