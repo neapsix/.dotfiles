@@ -12,11 +12,12 @@ api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- NOTE: Replaced by mfussenegger/nvim-ansible plugin.
 -- YAML: Set file type to yaml.ansible if the file contains ansible stuff.
-api.nvim_create_autocmd("BufRead", {
-    pattern = { "*.yaml", "*.yml" },
-    command = [[if search('hosts:\|tasks:', 'nw') | set ft=yaml.ansible | endif]],
-})
+-- api.nvim_create_autocmd("BufRead", {
+--     pattern = { "*.yaml", "*.yml" },
+--     command = [[if search('hosts:\|tasks:\|ansible.builtin', 'nw') | set ft=yaml.ansible | endif]],
+-- })
 
 -- api.nvim_create_autocmd('BufReadPost', {
 --     pattern = { '*.yaml', '*.yml' },

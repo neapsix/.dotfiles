@@ -69,6 +69,7 @@ vim.pack.add {
     -- gh "nyoom-engineering/oxocarbon.nvim",
 
     -- Language/filetype support
+    gh "mfussenegger/nvim-ansible",
     gh "SCJangra/table-nvim",
 }
 
