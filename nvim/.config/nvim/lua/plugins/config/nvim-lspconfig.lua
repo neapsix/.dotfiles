@@ -7,21 +7,21 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+vim.lsp.config("*", { capabilities = capabilities })
 
 -- Note: buffer-local mappings for LSP functions are set with an
 -- LspAttach autocmd defined in the core/mappings.lua file.
 
-require("lspconfig").ansiblels.setup { capabilities = capabilities }
+vim.lsp.enable "ansiblels"
 
-require("lspconfig").awk_ls.setup { capabilities = capabilities }
+vim.lsp.enable "awk_ls"
 
 vim.lsp.enable "docker_language_server"
 
 -- Currently not able to install this with Mason due to cargo issue.
--- require("lspconfig").beancount.setup{ capabilities = capabilities }
+-- vim.lsp.enable "beancount"
 
-require("lspconfig").lua_ls.setup {
+vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             runtime = {
@@ -49,18 +49,18 @@ require("lspconfig").lua_ls.setup {
             },
         },
     },
-    capabilities = capabilities,
-}
+})
+vim.lsp.enable "lua_ls"
 
-require("lspconfig").gopls.setup { capabilities = capabilities }
+vim.lsp.enable "gopls"
 
-require("lspconfig").pyright.setup { capabilities = capabilities }
+vim.lsp.enable "pyright"
 
-require("lspconfig").svelte.setup { capabilities = capabilities }
+vim.lsp.enable "svelte"
 
-require("lspconfig").templ.setup { capabilities = capabilities }
+vim.lsp.enable "templ"
 
-require("lspconfig").ts_ls.setup { capabilities = capabilities }
+vim.lsp.enable "ts_ls"
 
 -- Additional setup and helper functions for certain servers
 local M = {}
