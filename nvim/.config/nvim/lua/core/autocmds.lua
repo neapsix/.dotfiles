@@ -7,9 +7,7 @@ local api = vim.api
 
 -- Disable virtual text (linting) by default. Key in mappings.lua enables it.
 api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-        vim.diagnostic.config { virtual_text = false }
-    end,
+    callback = function() vim.diagnostic.config { virtual_text = false } end,
 })
 
 -- NOTE: Replaced by mfussenegger/nvim-ansible plugin.
@@ -86,19 +84,20 @@ api.nvim_create_autocmd("FileType", {
 
     -- Lua version:
     callback = function()
+        local buf = api.nvim_get_current_buf()
         -- Add 'r' to repeat the comment leader character on a new line.
-        api.nvim_buf_set_option(
-            0,
+        api.nvim_set_option_value(
             "formatoptions",
-            api.nvim_buf_get_option(0, "formatoptions") .. "r"
+            api.nvim_get_option_value("formatoptions", { buf = buf }) .. "r",
+            { buf = buf }
         )
         -- Treat a bullet (-, *, +), blockquote (>), table (|), numbered list
         -- (1.), empty or filled checkbox (- [ ] or - [x]) symbol followed by a
         -- space as a single-line comment leader.
-        api.nvim_buf_set_option(
-            0,
+        api.nvim_set_option_value(
             "comments",
-            "b:- [ ],b:- [x],b:-,b:*,b:+,b:>,b:|,b:1."
+            "b:- [ ],b:- [x],b:-,b:*,b:+,b:>,b:|,b:1.",
+            { buf = buf }
         )
 
         -- Indent bullets/numbered lists with Tab and Shift-Tab.
@@ -109,9 +108,7 @@ api.nvim_create_autocmd("FileType", {
 
 -- Highlight on yank using built-in function
 api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+    callback = function() vim.highlight.on_yank() end,
 })
 
 -- From Vim defaults: Go to where you left off when opening files (not commits).
