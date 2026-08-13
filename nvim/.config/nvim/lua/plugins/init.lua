@@ -2,70 +2,75 @@
 -- plugins/init.lua - Plugins for Neovim
 --
 
--- Install paq if it's not installed
-local paq = require("plugins.bootstrap_paq").bootstrap_paq()
+-- Commands to update, view, and autoremove plugins
+vim.api.nvim_create_user_command("PackUpdate", function() vim.pack.update() end, {})
+vim.api.nvim_create_user_command(
+    "PackInfo",
+    function() vim.pack.update(nil, { offline = true }) end,
+    {}
+)
+vim.api.nvim_create_user_command("PackClean", function()
+    local inactive = vim.iter(vim.pack.get())
+        :filter(function(x) return not x.active end)
+        :map(function(x) return x.spec.name end)
+        :totable()
+    vim.pack.del(inactive)
+end, {})
 
--- Install plugins
-paq:setup { verbose = false } {
-    "savq/paq-nvim",
+-- Update nvim-treesitter if it changes.
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == "nvim-treesitter" and kind == "update" then
+            if not ev.data.active then vim.cmd.packadd "nvim-treesitter" end
+            vim.cmd "TSUpdate"
+        end
+    end,
+})
 
+local gh = function(x) return "https://github.com/" .. x end
+vim.pack.add {
     -- Basic editor features
-    -- Note: Prefer this plugin to mini.pairs for integration with cmp
-    -- "windwp/nvim-autopairs",
-    -- Note: Prefer this plugin to built-in commenting and mini.comment
+    -- NOTE: Prefer Comment.nvim to built-in commenting and mini.comment
     -- for block comments and horizontal motions, e.g. gc$.
-    "numToStr/Comment.nvim",
-    "echasnovski/mini.nvim",
+    gh "numToStr/Comment.nvim",
+    gh "nvim-mini/mini.nvim",
 
     -- Syntax features
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    "windwp/nvim-ts-autotag",
-    "abecodes/tabout.nvim",
+    -- NOTE: Frozen version of nvim-treesitter (master branch)
+    { src = gh "nvim-treesitter/nvim-treesitter", version = "master" },
+    gh "windwp/nvim-ts-autotag",
+    gh "abecodes/tabout.nvim",
 
-    -- LSP
-    "williamboman/mason.nvim",
-    "neovim/nvim-lspconfig",
-    "mfussenegger/nvim-lint",
-    "stevearc/conform.nvim",
-    "folke/trouble.nvim",
+    -- LSP, linting, and formatting
+    gh "williamboman/mason.nvim",
+    gh "neovim/nvim-lspconfig",
+    gh "mfussenegger/nvim-lint",
+    gh "stevearc/conform.nvim",
+    gh "folke/trouble.nvim",
 
-    -- DAP
-    "nvim-neotest/nvim-nio",
-    "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
+    -- DAP UI
+    gh "nvim-neotest/nvim-nio",
+    gh "mfussenegger/nvim-dap",
+    gh "rcarriga/nvim-dap-ui",
 
-    -- Language-specific debugger setup
-    "leoluz/nvim-dap-go",
-
-    -- Completion
-    -- "hrsh7th/cmp-nvim-lsp",
-    -- "hrsh7th/cmp-nvim-lsp-signature-help",
-    -- "hrsh7th/cmp-buffer",
-    -- "hrsh7th/cmp-path",
-    -- "hrsh7th/cmp-cmdline",
-    -- "hrsh7th/cmp-calc",
-    -- "hrsh7th/nvim-cmp",
-
-    -- Snippets
-    -- "L3MON4D3/LuaSnip",
-    -- "saadparwaiz1/cmp_luasnip",
-    -- "rafamadriz/friendly-snippets",
+    -- DAP language support
+    gh "leoluz/nvim-dap-go",
 
     -- UI features
-    "linrongbin16/lsp-progress.nvim",
-    -- 'ellisonleao/glow.nvim';
-    "neapsix/glow.nvim", -- Use my patched version of glow.nvim
-    "SCJangra/table-nvim",
+    gh "linrongbin16/lsp-progress.nvim",
+    gh "neapsix/glow.nvim", -- My patched version of glow.nvim
 
-    -- Color schemes
-    -- "shaunsingh/nord.nvim";
-    "rose-pine/neovim",
-    -- "catppuccin/nvim",
-    -- "folke/tokyonight.nvim",
-    -- "nyoom-engineering/oxocarbon.nvim",
+    -- Theme
+    gh "rose-pine/neovim",
+    -- gh "shaunsingh/nord.nvim";
+    -- gh "catppuccin/nvim",
+    -- gh "folke/tokyonight.nvim",
+    -- gh "nyoom-engineering/oxocarbon.nvim",
+
+    -- Language/filetype support
+    gh "SCJangra/table-nvim",
 }
-
--- The user has to run :PaqInstall or :PaqSync once to pull everything
 
 require("rose-pine").setup {
     highlight_groups = {
@@ -83,15 +88,13 @@ require("rose-pine").setup {
 
 -- Select a color scheme
 -- Note: Do this before setting up plugins that need to be themed
--- vim.cmd [[colorscheme nord]]
 vim.cmd [[colorscheme rose-pine]]
+-- vim.cmd [[colorscheme nord]]
 -- vim.cmd [[colorscheme catppuccin]]
 -- vim.cmd [[colorscheme tokyonight]]
 -- vim.cmd [[colorscheme oxocarbon]]
 
 -- Run after-install setup for plugins that need it
--- Load autopairs before nvim-cmp
--- require("nvim-autopairs").setup {}
 -- Load mini.pairs before mini.completion
 require "plugins.config.mini.pairs"
 require("Comment").setup {}
@@ -129,16 +132,13 @@ require("mason").setup {}
 require "plugins.config.nvim-lint"
 require "plugins.config.conform"
 require "plugins.config.nvim-lspconfig"
--- require "plugins.config.luasnip"
 require "plugins.config.trouble"
 
--- require "plugins.config.nvim-cmp"
 -- If a completion plugin uses the tab key, load tabout after.
 require("tabout").setup {}
 
 require "plugins.config.nvim-dap"
 require "plugins.config.nvim-dap-ui"
-
 require("dap-go").setup {}
 require("table-nvim").setup {}
 
