@@ -15,7 +15,6 @@ paq:setup { verbose = false } {
     -- Note: Prefer this plugin to built-in commenting and mini.comment
     -- for block comments and horizontal motions, e.g. gc$.
     "numToStr/Comment.nvim",
-
     "echasnovski/mini.nvim",
 
     -- Syntax features
@@ -25,7 +24,6 @@ paq:setup { verbose = false } {
 
     -- LSP
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "mfussenegger/nvim-lint",
     "stevearc/conform.nvim",
@@ -57,6 +55,7 @@ paq:setup { verbose = false } {
     "linrongbin16/lsp-progress.nvim",
     -- 'ellisonleao/glow.nvim';
     "neapsix/glow.nvim", -- Use my patched version of glow.nvim
+    "SCJangra/table-nvim",
 
     -- Color schemes
     -- "shaunsingh/nord.nvim";
@@ -127,7 +126,6 @@ require "plugins.config.nvim-treesitter"
 require("nvim-ts-autotag").setup {}
 
 require("mason").setup {}
-require("mason-lspconfig").setup {}
 require "plugins.config.nvim-lint"
 require "plugins.config.conform"
 require "plugins.config.nvim-lspconfig"
@@ -142,6 +140,7 @@ require "plugins.config.nvim-dap"
 require "plugins.config.nvim-dap-ui"
 
 require("dap-go").setup {}
+require("table-nvim").setup {}
 
 require "plugins.config.lsp-progress"
 -- Load statusline after lsp-progress, mini.git, and mini.diff.

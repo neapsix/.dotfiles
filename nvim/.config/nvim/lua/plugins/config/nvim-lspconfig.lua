@@ -16,6 +16,11 @@ require("lspconfig").ansiblels.setup { capabilities = capabilities }
 
 require("lspconfig").awk_ls.setup { capabilities = capabilities }
 
+vim.lsp.enable "docker_language_server"
+
+-- Currently not able to install this with Mason due to cargo issue.
+-- require("lspconfig").beancount.setup{ capabilities = capabilities }
+
 require("lspconfig").lua_ls.setup {
     settings = {
         Lua = {
@@ -32,7 +37,7 @@ require("lspconfig").lua_ls.setup {
             },
             workspace = {
                 checkThirdParty = false,
-                library = { vim.env.VIMRUNTIME }
+                library = { vim.env.VIMRUNTIME },
                 -- This is a lot slower:
                 -- library = vim.api.nvim_get_runtime_file("", true),
             },
@@ -73,8 +78,7 @@ function M.gopls_organize_imports()
     -- argument after params if you find that you have to write the file
     -- twice for changes to be saved.
     -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-    local result =
-        vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
     for cid, res in pairs(result or {}) do
         for _, r in pairs(res.result or {}) do
             if r.edit then

@@ -20,13 +20,16 @@ require("conform").setup {
         -- javascript and friends
         -- TODO: use { {"prettierd", "prettier" } }
         css = { "prettier" },
+        dockerfile = { "dockerfmt" },
         html = { "prettier" },
         less = { "prettier" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
         json = { "prettier" },
         markdown = { "prettier" },
+        rst = { "rstfmt" },
         scss = { "prettier" },
+        sh = { "shfmt" },
         svelte = { "prettier" },
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
@@ -40,6 +43,16 @@ require("conform").setup {
                 "--style={BasedOnStyle: LLVM, UseTab: Always, IndentWidth: 8, TabWidth: 8, BreakBeforeBraces: Linux, ColumnLimit: 120}",
             },
         },
+        -- shfmt = {
+        --     prepend_args = {
+        --         "--indent",
+        --         "0",
+        --         "--binary-next-line",
+        --         "--case-indent",
+        --         "--space-redirects",
+        --         "--func-next-line",
+        --     },
+        -- },
     },
 }
 

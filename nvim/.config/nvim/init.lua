@@ -5,6 +5,7 @@
 vim.loader.enable()
 
 require "core.options"
+require "core.filetypes"
 require "core.mappings"
 require "core.autocmds"
 require "plugins"
