@@ -189,6 +189,7 @@ M.inactive = function()
     return table.concat({
         "%Y",
         "%t",
+        "%m%r%h%w",
     }, " ")
 end
 
